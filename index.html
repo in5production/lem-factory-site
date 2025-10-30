@@ -1,49 +1,157 @@
-/* Fixed Header */
-.site-header.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #e2e8f0;
-  z-index: 1000;
-}
-body {
-  padding-top: 80px; /* prevent content from hiding under header */
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LEM Factory — Energy Drinks & Cubes</title>
+  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-/* Banner (Eaten Product Image) */
-.banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  border-radius: 0;
-  margin: 0;
-  max-height: 500px;
-}
+<body>
+  <!-- Fixed Header -->
+  <header class="site-header fixed">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="LemLogo.png" alt="LEM Factory logo" class="logo" />
+        <span class="brand-text">LEM Factory</span>
+      </a>
+      <button id="nav-toggle" aria-expanded="false" aria-controls="main-nav" class="nav-toggle">☰</button>
+      <nav id="main-nav" class="nav">
+        <ul>
+          <li><a href="#drinks">Drinks</a></li>
+          <li><a href="#cubes">Energy Cubes</a></li>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-/* Ingredients */
-.ingredients-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: .5rem;
-}
-.ingredients-list li {
-  background: #fff;
-  border-radius: 10px;
-  padding: .75rem 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>LEM Factory — Natural Energy, Smart Performance</h1>
+          <p class="lead">Sugar-free fitness & performance energy drinks and cubes — powered by natural caffeine, L-Carnitine, and vitamins.</p>
+          <a href="#drinks" class="btn primary">Explore Products</a>
+        </div>
+        <div class="hero-media">
+          <img src="All.png" alt="All LEM Energy Drinks" />
+        </div>
+      </div>
+    </section>
 
-/* Hover preview effect */
-.card img {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover img {
-  transform: scale(1.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  cursor: pointer;
-}
+    <!-- Drinks -->
+    <section class="section" id="drinks">
+      <div class="container">
+        <h2>LEM Energy Drinks</h2>
+        <p class="muted">Sugar-free 250 ml aluminum cans — each flavor with a unique boost.</p>
+
+        <div class="cards-grid">
+          <article class="card"><img src="Lime Energy.png" alt="Lime Energy"/><h3>Lime Energy</h3><p>Refreshing lemon + mint for focus and hydration.</p></article>
+          <article class="card"><img src="Berry Boost.png" alt="Berry Boost"/><h3>Berry Boost</h3><p>Mixed berries + acai for antioxidant power.</p></article>
+          <article class="card"><img src="Night Focus.png" alt="Night Focus"/><h3>Night Focus</h3><p>Low-sugar formula with L-Theanine for calm energy.</p></article>
+          <article class="card"><img src="Ocean Ice.png" alt="Ocean Ice"/><h3>Ocean Ice</h3><p>Blue ice + citrus blend — cool and crisp.</p></article>
+          <article class="card"><img src="Sunrise Energy.png" alt="Sunrise Energy"/><h3>Sunrise Energy</h3><p>Tropical mango + orange for a bright start.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eaten Cube Banner -->
+    <section class="banner">
+      <img src="allflavours.png" alt="LEM Energy Cubes - All Flavours" />
+    </section>
+
+    <!-- Single Cubes -->
+    <section class="section alt" id="cubes">
+      <div class="container">
+        <h2>LEM Energy Cubes — Singles</h2>
+        <p class="muted">Flavor-packed single cubes, each matching its drink counterpart.</p>
+
+        <div class="cards-grid">
+          <article class="card"><img src="single lime cubes.png" alt="Lime Cube"/><h3>Lime Energy Cube</h3><p>Lemon + Mint cube for refreshing clarity.</p></article>
+          <article class="card"><img src="single berry cubes.png" alt="Berry Cube"/><h3>Berry Boost Cube</h3><p>Mixed berries + acai in compact cube form.</p></article>
+          <article class="card"><img src="single night cubes.png" alt="Night Focus Cube"/><h3>Night Focus Cube</h3><p>Evening balance with L-Theanine and B-vitamins.</p></article>
+          <article class="card"><img src="single ocean ice cubes.png" alt="Ocean Ice Cube"/><h3>Ocean Ice Cube</h3><p>Cooling blue mint & citrus bite for alertness.</p></article>
+          <article class="card"><img src="single sun cubes.png" alt="Sunrise Cube"/><h3>Sunrise Energy Cube</h3><p>Mango-orange tropical burst of energy.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cube Boxes -->
+    <section class="section" id="cube-boxes">
+      <div class="container">
+        <h2>LEM Energy Cube Boxes</h2>
+        <p class="muted">Stylish five-cube packs designed for travel and retail shelves.</p>
+
+        <div class="cards-grid">
+          <article class="card"><img src="Lim Energy Cube.png" alt="Lime Energy Cube Box"/><h3>Lime Energy Box</h3></article>
+          <article class="card"><img src="Berry Boost Cube.png" alt="Berry Boost Cube Box"/><h3>Berry Boost Box</h3></article>
+          <article class="card"><img src="Night Focus Cube.png" alt="Night Focus Cube Box"/><h3>Night Focus Box</h3></article>
+          <article class="card"><img src="Ocean Ice Cube.png" alt="Ocean Ice Cube Box"/><h3>Ocean Ice Box</h3></article>
+          <article class="card"><img src="Sunrise Energy Cube.png" alt="Sunrise Energy Cube Box"/><h3>Sunrise Energy Box</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ingredients -->
+    <section class="section alt" id="ingredients">
+      <div class="container">
+        <h2>Key Ingredients</h2>
+        <ul class="ingredients-list">
+          <li>Carbonated Water</li>
+          <li>Natural Caffeine (green tea / guarana)</li>
+          <li>L-Carnitine</li>
+          <li>B-Vitamins (B3, B5, B6, B12)</li>
+          <li>L-Theanine</li>
+          <li>Herbal & Fruit Extracts (Ginseng, Acai, Lavender)</li>
+          <li>Natural Flavors (Juice Concentrates & Oils)</li>
+          <li>Sweeteners: Stevia & Monk Fruit</li>
+          <li>Citric Acid</li>
+          <li>Preservatives: Potassium Sorbate, Sodium Benzoate</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Reach out for support, export, production, or sales.</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Support</h3>
+            <p><a href="mailto:info@lemfactory.com">info@lemfactory.com</a></p>
+            <p>General support & inquiries</p>
+          </div>
+          <div class="contact-card">
+            <h3>Export & Delivery</h3>
+            <p><a href="mailto:export@lemfactory.com">export@lemfactory.com</a></p>
+            <p>Shipping & export coordination</p>
+          </div>
+          <div class="contact-card">
+            <h3>Production</h3>
+            <p><a href="mailto:production@lemfactory.com">production@lemfactory.com</a></p>
+            <p>Factory production & QA</p>
+          </div>
+          <div class="contact-card">
+            <h3>Sales & Marketing</h3>
+            <p><a href="mailto:sales@lemfactory.com">sales@lemfactory.com</a></p>
+            <p>Store sales & marketing partnerships</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> LEM Factory. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
