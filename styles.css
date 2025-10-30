@@ -92,4 +92,12 @@ h1,h2,h3{margin:0 0 0.5rem 0;font-weight:700}
   .nav[aria-hidden="false"]{display:block}
   .nav ul{flex-direction:column}
   .nav-toggle{display:block;margin-left:auto}
+
+  /* Full-width banner for eaten cubes */
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  margin: 0;
 }
