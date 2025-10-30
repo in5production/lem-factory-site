@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LEM Factory — LEM Energy Drinks & Cubes</title>
+  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and energy cubes. Flavors, ingredients, packaging and certifications." />
+  <meta property="og:title" content="LEM Factory — LEM Energy" />
+  <meta property="og:description" content="Sugar-free fitness & performance energy drinks (250ml) and energy cubes. Contact: info@lemfactory.com" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/favicon.png" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="assets/logo-placeholder.png" alt="LEM Factory logo" class="logo" />
+        <span class="brand-text">LEM Factory</span>
+      </a>
+
+      <button id="nav-toggle" aria-expanded="false" aria-controls="main-nav" class="nav-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        ☰
+      </button>
+
+      <nav id="main-nav" class="nav">
+        <ul>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#packaging">Packaging</a></li>
+          <li><a href="#certs">Certificates</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home" aria-label="LEM Factory hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>LEM Energy — Healthy Performance, Naturally</h1>
+          <p class="lead">
+            Sugar-free fitness & performance energy drinks (250ml) and compact energy cubes — formulated with natural caffeine, L-Carnitine, B-vitamins and botanical extracts.
+          </p>
+          <a class="btn primary" href="#products">Explore products</a>
+        </div>
+        <div class="hero-media">
+          <img src="assets/can-mockup.png" alt="LEM Energy can mockup" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section" id="products">
+      <div class="container">
+        <h2>Products</h2>
+        <p class="muted">From 250ml aluminum cans to boxed energy cubes — sugar-free, functional-focused formulations.</p>
+
+        <div class="cards-grid">
+          <!-- Product card repeatable -->
+          <article class="card">
+            <img src="assets/can-mockup.png" alt="LEM Energy Lime" />
+            <h3>Lime Energy</h3>
+            <p class="card-sub">Focus & Refresh — Lemon + Mint</p>
+            <p class="small">Sugar-free, 250ml. Caffeine ≈ 80 mg / can (32 mg/100 ml target).</p>
+            <button class="btn secondary open-product" data-product="Lime Energy">Details</button>
+          </article>
+
+          <article class="card">
+            <img src="assets/can-mockup-2.png" alt="LEM Energy Berry" />
+            <h3>Berry Boost</h3>
+            <p class="card-sub">Power & Immunity — Mixed Berries + Acai</p>
+            <p class="small">Sugar-free, 250ml. Antioxidant-forward profile.</p>
+            <button class="btn secondary open-product" data-product="Berry Boost">Details</button>
+          </article>
+
+          <article class="card">
+            <img src="assets/can-mockup-3.png" alt="LEM Energy Ocean Ice" />
+            <h3>Ocean Ice</h3>
+            <p class="card-sub">Cool Energy — Blue Ice + Mint + Citrus</p>
+            <p class="small">Sugar-free, 250ml. Crisp refreshing flavor.</p>
+            <button class="btn secondary open-product" data-product="Ocean Ice">Details</button>
+          </article>
+
+          <article class="card">
+            <img src="assets/can-mockup-4.png" alt="LEM Energy Sunrise" />
+            <h3>Sunrise Energy</h3>
+            <p class="card-sub">Vitamin Power — Tropical Citrus + Mango + Orange</p>
+            <p class="small">Sugar-free, 250ml. Vitamin-fortified option.</p>
+            <button class="btn secondary open-product" data-product="Sunrise Energy">Details</button>
+          </article>
+
+          <article class="card">
+            <img src="assets/cube-mockup.png" alt="LEM Energy Cubes pack" />
+            <h3>LEM Energy Cubes</h3>
+            <p class="card-sub">5-flavor box — compact energy cubes</p>
+            <p class="small">Box of 5 cubes per flavor. Approx. box 80 × 80 × 40 mm (confirm dieline).</p>
+            <button class="btn secondary open-product" data-product="Energy Cubes">Details</button>
+          </article>
+        </div>
+
+        <div class="nutrition">
+          <h4>Nutrition (target / 100 ml)</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Nutrient</th>
+                <th>Per 100 ml (target)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Energy</td><td>5 kcal</td></tr>
+              <tr><td>Protein</td><td>0 g</td></tr>
+              <tr><td>Carbohydrates</td><td>1.1 g</td></tr>
+              <tr><td>Sugars</td><td>0 g</td></tr>
+              <tr><td>Fat</td><td>0 g</td></tr>
+              <tr><td>Caffeine</td><td>32 mg (≈ 80 mg per 250 ml)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ingredients -->
+    <section class="section alt" id="ingredients">
+      <div class="container">
+        <h2>Key Ingredients</h2>
+        <p class="muted">Consolidated ingredient profile used across the LEM line.</p>
+
+        <ul class="ingredients-grid">
+          <li><strong>Carbonated water</strong></li>
+          <li><strong>Natural caffeine</strong> (green tea, green coffee, or guarana)</li>
+          <li><strong>L-Carnitine</strong></li>
+          <li><strong>B-Vitamins</strong> (B3, B5, B6, B12)</li>
+          <li><strong>L-Theanine</strong></li>
+          <li><strong>Herbal & fruit extracts</strong> (ginseng, acai, guarana, lavender)</li>
+          <li><strong>Natural flavors</strong> (juice concentrates, extracts, oils)</li>
+          <li><strong>Sweeteners</strong>: Stevia and/or Monk Fruit</li>
+          <li><strong>Acidulant:</strong> Citric acid</li>
+          <li><strong>Preservatives:</strong> Potassium sorbate, Sodium benzoate</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Packaging -->
+    <section class="section" id="packaging">
+      <div class="container">
+        <h2>Packaging</h2>
+        <div class="grid-two">
+          <div>
+            <h3>250 ml Can</h3>
+            <ul>
+              <li>Dimensions: 165 × Ø55 mm (height × diameter)</li>
+              <li>Packaging: Aluminum can, shrink-wrapped in 24-can tray</li>
+              <li>Shelf life: 18 months; store below 25°C (ambient)</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Energy Cubes</h3>
+            <ul>
+              <li>Box of 5 cubes per flavor (5 flavors), color-coded</li>
+              <li>Approx. box dimensions: 80 × 80 × 40 mm (confirm with dieline)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section class="section alt" id="certs">
+      <div class="container">
+        <h2>Factory & Product Certificates</h2>
+        <p class="muted">Certificates required / provided by manufacturer.</p>
+        <ul class="certs-list">
+          <li>HACCP</li>
+          <li>ISO 22000</li>
+          <li>GMP</li>
+          <li>Halal (GCC compliance) — mandatory</li>
+          <li>Microbiological testing (COA)</li>
+          <li>Heavy metals testing (COA)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <h2>Contact / Submission</h2>
+        <p class="muted">Attach specification confirmation, artwork, and certificates in one folder before production approval.</p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>General</h3>
+            <p><a href="mailto:info@lemfactory.com">info@lemfactory.com</a></p>
+            <p>Support & general inquiries</p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Export & Shipping</h3>
+            <p><a href="mailto:export@lemfactory.com">export@lemfactory.com</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Production</h3>
+            <p><a href="mailto:production@lemfactory.com">production@lemfactory.com</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Sales</h3>
+            <p><a href="mailto:sales@lemfactory.com">sales@lemfactory.com</a></p>
+          </div>
+        </div>
+
+        <p class="sm-muted">Website: <a href="https://lemfactory.com" target="_blank" rel="noopener">lemfactory.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> LEM Factory. All rights reserved.</p>
+      <p class="small">Content & specs sourced from the LEM Energy – Factory Production File. :contentReference[oaicite:1]{index=1}</p>
+    </div>
+  </footer>
+
+  <!-- Product Modal (hidden by default) -->
+  <div id="product-modal" class="modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <h3 id="modal-title">Product</h3>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
