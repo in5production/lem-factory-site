@@ -333,3 +333,26 @@ img { max-width: 100%; display: block; }
 /* Cart summary and actions */
 .cart-summary { margin-top: .75rem; display:flex; justify-content:space-between; font-weight:600; color:var(--muted); }
 .cart-actions { margin-top: .75rem; display:flex; gap:.5rem; justify-content:flex-end; }
+/* Floating Cart Icon */
+#cart-icon {
+  position: fixed;
+  top: 110px;
+  right: 20px;
+  background: #ffbf00;
+  padding: 10px 15px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+#cart-icon:hover {
+  background: #e0aa00;
+}
+
+#cart-count {
+  font-weight: 700;
+  margin-left: 5px;
+}
