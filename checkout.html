@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Checkout — LEM Factory</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="container" style="padding-top:150px; text-align:center;">
+
+    <h1>Your Cart</h1>
+    <p class="muted">Review your products below</p>
+
+    <div id="cart-items"></div>
+
+    <h2 style="margin-top:40px; color:#ff0000;">⚠ Product will be available soon in your country.</h2>
+    <p>We will notify you once shipping is open.</p>
+
+    <button class="btn primary" onclick="window.location.href='index.html'">Return to Home</button>
+  </div>
+
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem("cart")) || [];
+    }
+
+    const cart = getCart();
+    const container = document.getElementById("cart-items");
+
+    if (cart.length === 0) {
+      container.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      let list = "<ul style='list-style:none; padding:0; font-size:18px;'>";
+
+      cart.forEach(item => {
+        list += `<li>${item.name} — $${item.price}</li>`;
+      });
+
+      list += "</ul>";
+
+      container.innerHTML = list;
+    }
+  </script>
+
+</body>
+</html>
