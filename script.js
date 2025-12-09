@@ -1,17 +1,19 @@
-// MOBILE NAV
+/** MOBILE NAV **/
 const navToggle = document.getElementById("nav-toggle");
 const nav = document.getElementById("main-nav");
 
-navToggle?.addEventListener("click", () => {
-  const expanded = navToggle.getAttribute("aria-expanded") === "true";
-  navToggle.setAttribute("aria-expanded", !expanded);
-  nav.setAttribute("aria-hidden", expanded);
-});
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", !expanded);
+    nav.setAttribute("aria-hidden", expanded);
+  });
+}
 
-// YEAR
+/** YEAR **/
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// LIGHTBOX
+/** LIGHTBOX **/
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
@@ -26,37 +28,42 @@ lightbox.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
 
-// CART DATA
-function loadCart() {
+/** CART SYSTEM **/
+function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCounter();
+  updateCartCount();
 }
 
-function updateCartCounter() {
-  const cart = loadCart();
+function updateCartCount() {
+  const cart = getCart();
   document.getElementById("cart-count").textContent = cart.length;
 }
 
-// ADD TO CART
+// ADD TO CART BUTTONS
 document.querySelectorAll(".add-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    const product = btn.getAttribute("data-product");
-    const cart = loadCart();
-    cart.push({ name: product, price: 1 });
+    const product = btn.dataset.product;
+
+    const cart = getCart();
+    cart.push({
+      name: product,
+      price: 1
+    });
+
     saveCart(cart);
 
-    alert(`${product} added to cart.`);
+    alert(`${product} added to cart`);
   });
 });
 
-// CLICK CART ICON → CHECKOUT
+// CART ICON CLICK → CHECKOUT PAGE
 document.getElementById("cart-icon").addEventListener("click", () => {
   window.location.href = "checkout.html";
 });
 
 // INITIAL COUNTER
-updateCartCounter();
+updateCartCount();
