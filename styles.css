@@ -379,3 +379,22 @@ img { max-width: 100%; display: block; }
   font-weight: bold;
   margin-left: 5px;
 }
+/* Floating Cart Icon (ensure visible) */
+#cart-icon {
+  position: fixed;
+  top: 110px;
+  right: 20px;
+  background: #ffbf00;
+  padding: 10px 15px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 3000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+#cart-icon:hover { background: #e0aa00; }
+#cart-count { font-weight: 700; margin-left: 6px; }
+
+/* Small toast style (optional) */
+.temp-toast { pointer-events: none; }
