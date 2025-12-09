@@ -1,47 +1,76 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Checkout — LEM Factory</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* small local style for checkout list */
+    .checkout-list { list-style:none; padding:0; margin:1rem 0; text-align:left; max-width:720px; margin-left:auto; margin-right:auto; }
+    .checkout-list li { padding:10px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center; }
+    .checkout-summary { text-align:center; margin-top:18px; font-weight:700; }
+    .not-available { color:#b91c1c; font-weight:700; margin-top:20px; }
+  </style>
 </head>
-
 <body>
-  <div class="container" style="padding-top:150px; text-align:center;">
+  <header class="site-header fixed" style="position:relative; top:0">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="LemLogo.png" alt="LEM Factory logo" class="logo" />
+        <span class="brand-text">LEM Factory</span>
+      </a>
+    </div>
+  </header>
 
-    <h1>Your Cart</h1>
-    <p class="muted">Review your products below</p>
+  <main style="padding-top:120px;">
+    <div class="container">
+      <h1>Checkout</h1>
+      <p class="muted">Review the products you added</p>
 
-    <div id="cart-items"></div>
+      <ul id="checkout-list" class="checkout-list"></ul>
 
-    <h2 style="margin-top:40px; color:#ff0000;">⚠ Product will be available soon in your country.</h2>
-    <p>We will notify you once shipping is open.</p>
+      <div class="checkout-summary">
+        Subtotal: <span id="checkout-total">0.00</span> USD
+      </div>
 
-    <button class="btn primary" onclick="window.location.href='index.html'">Return to Home</button>
-  </div>
+      <div class="not-available">
+        ⚠ Product will be available soon in your country.
+      </div>
+
+      <div style="text-align:center; margin-top:18px;">
+        <button class="btn" onclick="window.location.href='index.html'">Continue Shopping</button>
+      </div>
+    </div>
+  </main>
 
   <script>
-    function getCart() {
-      return JSON.parse(localStorage.getItem("cart")) || [];
-    }
+    (function(){
+      const CART_KEY = 'lemfactory_cart_v2';
+      function loadCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ return []; } }
+      const cart = loadCart();
+      const listEl = document.getElementById('checkout-list');
+      const totalEl = document.getElementById('checkout-total');
+      if (!listEl) return;
 
-    const cart = getCart();
-    const container = document.getElementById("cart-items");
-
-    if (cart.length === 0) {
-      container.innerHTML = "<p>Your cart is empty.</p>";
-    } else {
-      let list = "<ul style='list-style:none; padding:0; font-size:18px;'>";
-
-      cart.forEach(item => {
-        list += `<li>${item.name} — $${item.price}</li>`;
-      });
-
-      list += "</ul>";
-
-      container.innerHTML = list;
-    }
+      if (cart.length === 0) {
+        listEl.innerHTML = '<li>Your cart is empty.</li>';
+        totalEl.textContent = '0.00';
+      } else {
+        let subtotal = 0;
+        listEl.innerHTML = '';
+        cart.forEach(item => {
+          const li = document.createElement('li');
+          const qty = Number(item.qty || 1);
+          const price = Number(item.price || 1);
+          const line = (price * qty);
+          subtotal += line;
+          li.innerHTML = `<div>${item.name} <small style="color:#666;">x${qty}</small></div><div style="font-weight:700;">$${line.toFixed(2)}</div>`;
+          listEl.appendChild(li);
+        });
+        totalEl.textContent = subtotal.toFixed(2);
+      }
+    })();
   </script>
-
 </body>
 </html>
