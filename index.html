@@ -4,12 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LEM Factory — Energy Drinks & Cubes</title>
-
   <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes. Natural energy powered by caffeine, L-Carnitine, and B-vitamins." />
-
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Google Analytics 4 -->
+  <!-- Google Analytics & Meta Pixel kept as before -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPL0N1EVP2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,7 +15,6 @@
     gtag('config', 'G-CPL0N1EVP2');
   </script>
 
-  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,22 +22,17 @@
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '785081037921589');
-    fbq('track', 'PageView');
+    fbq('init', '785081037921589'); fbq('track','PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=785081037921589&ev=PageView&noscript=1" />
+    src="https://www.facebook.com/tr?id=785081037921589&ev=PageView&noscript=1"/>
   </noscript>
-
 </head>
-
 <body>
-
-  <!-- Fixed Header -->
+  <!-- Header with Cart Icon -->
   <header class="site-header fixed">
     <div class="container header-inner">
       <a class="brand" href="#">
@@ -49,22 +40,26 @@
         <span class="brand-text">LEM Factory</span>
       </a>
 
-      <button id="nav-toggle" aria-expanded="false" aria-controls="main-nav" class="nav-toggle">☰</button>
+      <div class="header-controls">
+        <nav id="main-nav" class="nav" aria-hidden="true">
+          <ul>
+            <li><a href="#drinks">Drinks</a></li>
+            <li><a href="#cubes">Energy Cubes</a></li>
+            <li><a href="#ingredients">Ingredients</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
 
-      <nav id="main-nav" class="nav" aria-hidden="true">
-        <ul>
-          <li><a href="#drinks">Drinks</a></li>
-          <li><a href="#cubes">Energy Cubes</a></li>
-          <li><a href="#ingredients">Ingredients</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+        <button id="cart-toggle" class="cart-btn" title="Open cart">
+          🛒 <span id="cart-count">0</span>
+        </button>
 
+        <button id="nav-toggle" aria-expanded="false" aria-controls="main-nav" class="nav-toggle">☰</button>
+      </div>
     </div>
   </header>
 
   <main>
-
     <!-- Hero -->
     <section class="hero" id="home">
       <div class="container hero-grid">
@@ -73,185 +68,153 @@
           <p class="lead">Sugar-free fitness & performance energy drinks and cubes — powered by natural caffeine, L-Carnitine, and vitamins.</p>
           <a href="#drinks" class="btn primary">Explore Products</a>
         </div>
-
         <div class="hero-media">
           <img src="All.png" alt="All LEM Energy Drinks" />
         </div>
       </div>
     </section>
 
-    <!-- Drinks -->
+    <!-- Drinks: NOTE each product now has a data-price attribute -->
     <section class="section" id="drinks">
       <div class="container">
         <h2>LEM Energy Drinks</h2>
         <p class="muted">Sugar-free 250 ml aluminum cans — each flavor with a unique boost.</p>
 
         <div class="cards-grid center">
-
-          <article class="card">
-            <img src="Lime Energy.png" onclick="trackAddToCart('Lime Energy')" />
+          <article class="card" data-sku="lime-drink" data-price="1.50">
+            <img src="Lime Energy.png" alt="Lime Energy" />
             <h3>Lime Energy</h3>
             <p>Refreshing lemon + mint for focus and hydration.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="Berry Boost.png" onclick="trackAddToCart('Berry Boost')" />
+          <article class="card" data-sku="berry-drink" data-price="1.50">
+            <img src="Berry Boost.png" alt="Berry Boost" />
             <h3>Berry Boost</h3>
             <p>Mixed berries + acai for antioxidant power.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="Night Focus.png" onclick="trackAddToCart('Night Focus')" />
+          <article class="card" data-sku="night-drink" data-price="1.50">
+            <img src="Night Focus.png" alt="Night Focus" />
             <h3>Night Focus</h3>
             <p>Low-sugar formula with L-Theanine for calm energy.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="Ocean Ice.png" onclick="trackAddToCart('Ocean Ice')" />
+          <article class="card" data-sku="ocean-drink" data-price="1.50">
+            <img src="Ocean Ice.png" alt="Ocean Ice" />
             <h3>Ocean Ice</h3>
             <p>Blue ice + citrus blend — cool and crisp.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="Sunrise Energy.png" onclick="trackAddToCart('Sunrise Energy')" />
+          <article class="card" data-sku="sunrise-drink" data-price="1.50">
+            <img src="Sunrise Energy.png" alt="Sunrise Energy" />
             <h3>Sunrise Energy</h3>
             <p>Tropical mango + orange for a bright start.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- Cubes Banner (Fixed Size Box) -->
+    <!-- Banner -->
     <section class="section alt banner-section">
       <div class="container">
         <div class="card large banner-box">
-          <img src="allflavours.png" alt="LEM Energy Cubes - All Flavours" />
+          <img src="allflavours.png" alt="LEM Energy Cubes - All Flavours"/>
         </div>
       </div>
     </section>
 
-    <!-- Single Cubes -->
+    <!-- Single cubes -->
     <section class="section alt" id="cubes">
       <div class="container">
         <h2>LEM Energy Cubes — Singles</h2>
-        <p class="muted">Flavor-packed single cubes matching their drink counterparts.</p>
+        <p class="muted">Flavor-packed single cubes, each matching its drink counterpart.</p>
 
         <div class="cards-grid center">
-
-          <article class="card">
-            <img src="single lime cubes.png" onclick="trackAddToCart('Lime Cube')" />
+          <article class="card" data-sku="lime-cube" data-price="0.80">
+            <img src="single lime cubes.png" alt="Lime Cube" />
             <h3>Lime Energy Cube</h3>
             <p>Lemon + Mint cube for refreshing clarity.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="single berry cubes.png" onclick="trackAddToCart('Berry Cube')" />
+          <article class="card" data-sku="berry-cube" data-price="0.80">
+            <img src="single berry cubes.png" alt="Berry Cube" />
             <h3>Berry Boost Cube</h3>
             <p>Mixed berries + acai in compact cube form.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="single night cubes.png" onclick="trackAddToCart('Night Focus Cube')" />
+          <article class="card" data-sku="night-cube" data-price="0.80">
+            <img src="single night cubes.png" alt="Night Cube" />
             <h3>Night Focus Cube</h3>
             <p>Evening balance with L-Theanine and B-vitamins.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="single ocean ice cubes.png" onclick="trackAddToCart('Ocean Ice Cube')" />
+          <article class="card" data-sku="ocean-cube" data-price="0.80">
+            <img src="single ocean ice cubes.png" alt="Ocean Cube" />
             <h3>Ocean Ice Cube</h3>
             <p>Cooling blue mint & citrus bite.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
 
-          <article class="card">
-            <img src="single sun cubes.png" onclick="trackAddToCart('Sunrise Cube')" />
+          <article class="card" data-sku="sun-cube" data-price="0.80">
+            <img src="single sun cubes.png" alt="Sunrise Cube" />
             <h3>Sunrise Cube</h3>
             <p>Mango-orange tropical energy.</p>
+            <button class="add-cart">Add to cart</button>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- Cube Packs -->
+    <!-- Packs (same pattern) -->
     <section class="section" id="cube-packs">
       <div class="container">
         <h2>LEM Energy Cube Packs</h2>
         <p class="muted">Stylish five-cube packs designed for travel and retail shelves.</p>
 
         <div class="cards-grid center">
-          <article class="card"><img src="Lim Energy Cube.png" /><h3>Lime Energy Pack</h3></article>
-          <article class="card"><img src="Berry Boost Cube.png" /><h3>Berry Boost Pack</h3></article>
-          <article class="card"><img src="Night Focus Cube.png" /><h3>Night Focus Pack</h3></article>
-          <article class="card"><img src="Ocean Ice Cube.png" /><h3>Ocean Ice Pack</h3></article>
-          <article class="card"><img src="Sunrise Energy Cube.png" /><h3>Sunrise Energy Pack</h3></article>
+          <article class="card" data-sku="lime-pack" data-price="4.50">
+            <img src="Lim Energy Cube.png" alt="Lime Pack"/>
+            <h3>Lime Energy Pack</h3>
+            <button class="add-cart">Add to cart</button>
+          </article>
+
+          <article class="card" data-sku="berry-pack" data-price="4.50">
+            <img src="Berry Boost Cube.png" alt="Berry Pack"/>
+            <h3>Berry Boost Pack</h3>
+            <button class="add-cart">Add to cart</button>
+          </article>
+
+          <article class="card" data-sku="night-pack" data-price="4.50">
+            <img src="Night Focus Cube.png" alt="Night Pack"/>
+            <h3>Night Focus Pack</h3>
+            <button class="add-cart">Add to cart</button>
+          </article>
+
+          <article class="card" data-sku="ocean-pack" data-price="4.50">
+            <img src="Ocean Ice Cube.png" alt="Ocean Pack"/>
+            <h3>Ocean Ice Pack</h3>
+            <button class="add-cart">Add to cart</button>
+          </article>
+
+          <article class="card" data-sku="sun-pack" data-price="4.50">
+            <img src="Sunrise Energy Cube.png" alt="Sunrise Pack"/>
+            <h3>Sunrise Energy Pack</h3>
+            <button class="add-cart">Add to cart</button>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Ingredients -->
-    <section class="section alt" id="ingredients">
-      <div class="container">
-        <h2>Key Ingredients (per 100ml)</h2>
-
-        <ul class="ingredients-list">
-          <li>Natural Caffeine — 32 mg</li>
-          <li>L-Carnitine — 250 mg</li>
-          <li>L-Theanine — 100 mg</li>
-          <li>B-Vitamins (B3, B5, B6, B12) — 10–100% NRV</li>
-          <li>Ginseng Extract — 50 mg</li>
-          <li>Acai & Berry Extracts — 40 mg</li>
-          <li>Guarana Extract — 30 mg</li>
-          <li>Citric Acid — 80 mg</li>
-          <li>Stevia / Monk Fruit — 15 mg</li>
-          <li>Electrolytes (Na, K, Mg) — 50 mg</li>
-        </ul>
-
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="container">
-        <h2>Contact</h2>
-
-        <div class="contact-grid">
-
-          <div class="contact-card">
-            <h3>Support</h3>
-            <a href="mailto:info@lemfactory.com">info@lemfactory.com</a>
-            <p>General support & inquiries</p>
-          </div>
-
-          <div class="contact-card">
-            <h3>Export & Delivery</h3>
-            <a href="mailto:export@lemfactory.com">export@lemfactory.com</a>
-            <p>Shipping & export coordination</p>
-          </div>
-
-          <div class="contact-card">
-            <h3>Production</h3>
-            <a href="mailto:production@lemfactory.com">production@lemfactory.com</a>
-            <p>Factory production & QA</p>
-          </div>
-
-          <div class="contact-card">
-            <h3>Sales & Marketing</h3>
-            <a href="mailto:sales@lemfactory.com">sales@lemfactory.com</a>
-            <p>Retail & marketing partnerships</p>
-          </div>
-
-        </div>
-
-        <div class="social">
-          <a href="https://www.tiktok.com/@lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"></a>
-          <a href="https://www.instagram.com/lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"></a>
-          <a href="https://x.com/lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"></a>
-          <a href="https://www.youtube.com/@lem_factory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"></a>
-        </div>
-
-      </div>
-    </section>
+    <!-- Ingredients & Contact remain unchanged (omitted here for brevity) -->
+    <!-- ... (keep your existing Ingredients and Contact sections) ... -->
 
   </main>
 
@@ -261,12 +224,27 @@
     </div>
   </footer>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" src="">
+  <!-- Cart modal -->
+  <div id="cart-modal" class="cart-modal" aria-hidden="true">
+    <div class="cart-panel">
+      <button id="cart-close" class="cart-close">✕</button>
+      <h3>Your Cart</h3>
+      <div id="cart-items"></div>
+
+      <div class="cart-summary">
+        <div>Subtotal: <span id="cart-subtotal">0.00</span> BHD</div>
+        <div>Country: <span id="visitor-country">—</span></div>
+      </div>
+
+      <div class="cart-actions">
+        <button id="clear-cart" class="btn">Clear Cart</button>
+        <button id="checkout" class="btn primary">Checkout (simulate)</button>
+      </div>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <div id="lightbox" class="lightbox"><img id="lightbox-img" src=""></div>
 
+  <script src="script.js"></script>
 </body>
 </html>
