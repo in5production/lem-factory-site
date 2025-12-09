@@ -1,6 +1,7 @@
 // Mobile nav toggle
 const navToggle = document.getElementById("nav-toggle");
 const nav = document.getElementById("main-nav");
+
 if (navToggle) {
   navToggle.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
@@ -12,7 +13,7 @@ if (navToggle) {
 // Dynamic year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Lightbox click-to-zoom
+// Lightbox (preview)
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
@@ -26,3 +27,27 @@ document.querySelectorAll(".card img").forEach(img => {
 lightbox.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
+
+// ------------------------------
+// META & GA TRACKING
+// ------------------------------
+
+function trackAddToCart(product) {
+  fbq('track', 'AddToCart', { content_name: product, value: 0, currency: "BHD" });
+  gtag('event', 'add_to_cart', { item_name: product });
+}
+
+function trackOrder(amount, product) {
+  fbq('track', 'Purchase', { value: amount, currency: "BHD", content_name: product });
+  gtag('event', 'purchase', {
+    value: amount,
+    currency: "BHD",
+    item_name: product,
+    transaction_id: Date.now()
+  });
+}
+
+function trackComment() {
+  fbq('trackCustom', 'CommentActivity');
+  gtag('event', 'comment_activity');
+}
