@@ -4,11 +4,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LEM Factory — Energy Drinks & Cubes</title>
+
   <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes. Natural energy powered by caffeine, L-Carnitine, and B-vitamins." />
+
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPL0N1EVP2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-CPL0N1EVP2');
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '785081037921589');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=785081037921589&ev=PageView&noscript=1" />
+  </noscript>
+
 </head>
 
 <body>
+
   <!-- Fixed Header -->
   <header class="site-header fixed">
     <div class="container header-inner">
@@ -16,8 +48,10 @@
         <img src="LemLogo.png" alt="LEM Factory logo" class="logo" />
         <span class="brand-text">LEM Factory</span>
       </a>
+
       <button id="nav-toggle" aria-expanded="false" aria-controls="main-nav" class="nav-toggle">☰</button>
-      <nav id="main-nav" class="nav">
+
+      <nav id="main-nav" class="nav" aria-hidden="true">
         <ul>
           <li><a href="#drinks">Drinks</a></li>
           <li><a href="#cubes">Energy Cubes</a></li>
@@ -25,10 +59,12 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
   <main>
+
     <!-- Hero -->
     <section class="hero" id="home">
       <div class="container hero-grid">
@@ -37,6 +73,7 @@
           <p class="lead">Sugar-free fitness & performance energy drinks and cubes — powered by natural caffeine, L-Carnitine, and vitamins.</p>
           <a href="#drinks" class="btn primary">Explore Products</a>
         </div>
+
         <div class="hero-media">
           <img src="All.png" alt="All LEM Energy Drinks" />
         </div>
@@ -50,19 +87,45 @@
         <p class="muted">Sugar-free 250 ml aluminum cans — each flavor with a unique boost.</p>
 
         <div class="cards-grid center">
-          <article class="card"><img src="Lime Energy.png" alt="Lime Energy"/><h3>Lime Energy</h3><p>Refreshing lemon + mint for focus and hydration.</p></article>
-          <article class="card"><img src="Berry Boost.png" alt="Berry Boost"/><h3>Berry Boost</h3><p>Mixed berries + acai for antioxidant power.</p></article>
-          <article class="card"><img src="Night Focus.png" alt="Night Focus"/><h3>Night Focus</h3><p>Low-sugar formula with L-Theanine for calm energy.</p></article>
-          <article class="card"><img src="Ocean Ice.png" alt="Ocean Ice"/><h3>Ocean Ice</h3><p>Blue ice + citrus blend — cool and crisp.</p></article>
-          <article class="card"><img src="Sunrise Energy.png" alt="Sunrise Energy"/><h3>Sunrise Energy</h3><p>Tropical mango + orange for a bright start.</p></article>
+
+          <article class="card">
+            <img src="Lime Energy.png" onclick="trackAddToCart('Lime Energy')" />
+            <h3>Lime Energy</h3>
+            <p>Refreshing lemon + mint for focus and hydration.</p>
+          </article>
+
+          <article class="card">
+            <img src="Berry Boost.png" onclick="trackAddToCart('Berry Boost')" />
+            <h3>Berry Boost</h3>
+            <p>Mixed berries + acai for antioxidant power.</p>
+          </article>
+
+          <article class="card">
+            <img src="Night Focus.png" onclick="trackAddToCart('Night Focus')" />
+            <h3>Night Focus</h3>
+            <p>Low-sugar formula with L-Theanine for calm energy.</p>
+          </article>
+
+          <article class="card">
+            <img src="Ocean Ice.png" onclick="trackAddToCart('Ocean Ice')" />
+            <h3>Ocean Ice</h3>
+            <p>Blue ice + citrus blend — cool and crisp.</p>
+          </article>
+
+          <article class="card">
+            <img src="Sunrise Energy.png" onclick="trackAddToCart('Sunrise Energy')" />
+            <h3>Sunrise Energy</h3>
+            <p>Tropical mango + orange for a bright start.</p>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- Eaten Cube "Card" -->
+    <!-- Cubes Banner (Fixed Size Box) -->
     <section class="section alt banner-section">
       <div class="container">
-        <div class="card large">
+        <div class="card large banner-box">
           <img src="allflavours.png" alt="LEM Energy Cubes - All Flavours" />
         </div>
       </div>
@@ -72,14 +135,40 @@
     <section class="section alt" id="cubes">
       <div class="container">
         <h2>LEM Energy Cubes — Singles</h2>
-        <p class="muted">Flavor-packed single cubes, each matching its drink counterpart.</p>
+        <p class="muted">Flavor-packed single cubes matching their drink counterparts.</p>
 
         <div class="cards-grid center">
-          <article class="card"><img src="single lime cubes.png" alt="Lime Cube"/><h3>Lime Energy Cube</h3><p>Lemon + Mint cube for refreshing clarity.</p></article>
-          <article class="card"><img src="single berry cubes.png" alt="Berry Cube"/><h3>Berry Boost Cube</h3><p>Mixed berries + acai in compact cube form.</p></article>
-          <article class="card"><img src="single night cubes.png" alt="Night Focus Cube"/><h3>Night Focus Cube</h3><p>Evening balance with L-Theanine and B-vitamins.</p></article>
-          <article class="card"><img src="single ocean ice cubes.png" alt="Ocean Ice Cube"/><h3>Ocean Ice Cube</h3><p>Cooling blue mint & citrus bite for alertness.</p></article>
-          <article class="card"><img src="single sun cubes.png" alt="Sunrise Cube"/><h3>Sunrise Energy Cube</h3><p>Mango-orange tropical burst of energy.</p></article>
+
+          <article class="card">
+            <img src="single lime cubes.png" onclick="trackAddToCart('Lime Cube')" />
+            <h3>Lime Energy Cube</h3>
+            <p>Lemon + Mint cube for refreshing clarity.</p>
+          </article>
+
+          <article class="card">
+            <img src="single berry cubes.png" onclick="trackAddToCart('Berry Cube')" />
+            <h3>Berry Boost Cube</h3>
+            <p>Mixed berries + acai in compact cube form.</p>
+          </article>
+
+          <article class="card">
+            <img src="single night cubes.png" onclick="trackAddToCart('Night Focus Cube')" />
+            <h3>Night Focus Cube</h3>
+            <p>Evening balance with L-Theanine and B-vitamins.</p>
+          </article>
+
+          <article class="card">
+            <img src="single ocean ice cubes.png" onclick="trackAddToCart('Ocean Ice Cube')" />
+            <h3>Ocean Ice Cube</h3>
+            <p>Cooling blue mint & citrus bite.</p>
+          </article>
+
+          <article class="card">
+            <img src="single sun cubes.png" onclick="trackAddToCart('Sunrise Cube')" />
+            <h3>Sunrise Cube</h3>
+            <p>Mango-orange tropical energy.</p>
+          </article>
+
         </div>
       </div>
     </section>
@@ -91,11 +180,11 @@
         <p class="muted">Stylish five-cube packs designed for travel and retail shelves.</p>
 
         <div class="cards-grid center">
-          <article class="card"><img src="Lim Energy Cube.png" alt="Lime Energy Pack"/><h3>Lime Energy Pack</h3></article>
-          <article class="card"><img src="Berry Boost Cube.png" alt="Berry Boost Pack"/><h3>Berry Boost Pack</h3></article>
-          <article class="card"><img src="Night Focus Cube.png" alt="Night Focus Pack"/><h3>Night Focus Pack</h3></article>
-          <article class="card"><img src="Ocean Ice Cube.png" alt="Ocean Ice Pack"/><h3>Ocean Ice Pack</h3></article>
-          <article class="card"><img src="Sunrise Energy Cube.png" alt="Sunrise Energy Pack"/><h3>Sunrise Energy Pack</h3></article>
+          <article class="card"><img src="Lim Energy Cube.png" /><h3>Lime Energy Pack</h3></article>
+          <article class="card"><img src="Berry Boost Cube.png" /><h3>Berry Boost Pack</h3></article>
+          <article class="card"><img src="Night Focus Cube.png" /><h3>Night Focus Pack</h3></article>
+          <article class="card"><img src="Ocean Ice Cube.png" /><h3>Ocean Ice Pack</h3></article>
+          <article class="card"><img src="Sunrise Energy Cube.png" /><h3>Sunrise Energy Pack</h3></article>
         </div>
       </div>
     </section>
@@ -104,6 +193,7 @@
     <section class="section alt" id="ingredients">
       <div class="container">
         <h2>Key Ingredients (per 100ml)</h2>
+
         <ul class="ingredients-list">
           <li>Natural Caffeine — 32 mg</li>
           <li>L-Carnitine — 250 mg</li>
@@ -116,6 +206,7 @@
           <li>Stevia / Monk Fruit — 15 mg</li>
           <li>Electrolytes (Na, K, Mg) — 50 mg</li>
         </ul>
+
       </div>
     </section>
 
@@ -123,40 +214,45 @@
     <section class="section" id="contact">
       <div class="container">
         <h2>Contact</h2>
-        <p>Reach out for support, export, production, or sales.</p>
 
         <div class="contact-grid">
+
           <div class="contact-card">
             <h3>Support</h3>
-            <p><a href="mailto:info@lemfactory.com">info@lemfactory.com</a></p>
+            <a href="mailto:info@lemfactory.com">info@lemfactory.com</a>
             <p>General support & inquiries</p>
           </div>
+
           <div class="contact-card">
             <h3>Export & Delivery</h3>
-            <p><a href="mailto:export@lemfactory.com">export@lemfactory.com</a></p>
+            <a href="mailto:export@lemfactory.com">export@lemfactory.com</a>
             <p>Shipping & export coordination</p>
           </div>
+
           <div class="contact-card">
             <h3>Production</h3>
-            <p><a href="mailto:production@lemfactory.com">production@lemfactory.com</a></p>
+            <a href="mailto:production@lemfactory.com">production@lemfactory.com</a>
             <p>Factory production & QA</p>
           </div>
+
           <div class="contact-card">
             <h3>Sales & Marketing</h3>
-            <p><a href="mailto:sales@lemfactory.com">sales@lemfactory.com</a></p>
-            <p>Store sales & marketing partnerships</p>
+            <a href="mailto:sales@lemfactory.com">sales@lemfactory.com</a>
+            <p>Retail & marketing partnerships</p>
           </div>
+
         </div>
 
-        <!-- Social Links -->
         <div class="social">
-          <a href="https://www.tiktok.com/@lemfactory" target="_blank" title="TikTok"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" /></a>
-          <a href="https://www.instagram.com/lemfactory" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" /></a>
-          <a href="https://x.com/lemfactory" target="_blank" title="X (Twitter)"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" /></a>
-          <a href="https://www.youtube.com/@lem_factory" target="_blank" title="YouTube"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" /></a>
+          <a href="https://www.tiktok.com/@lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"></a>
+          <a href="https://www.instagram.com/lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"></a>
+          <a href="https://x.com/lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"></a>
+          <a href="https://www.youtube.com/@lem_factory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"></a>
         </div>
+
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
@@ -165,10 +261,12 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" src="" alt="">
+    <img id="lightbox-img" src="">
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
