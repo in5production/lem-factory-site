@@ -279,3 +279,28 @@
   <script src="script.js"></script>
 </body>
 </html>
+<script>
+// Track page views
+gtag('event', 'page_view');
+
+// Track Add to Cart buttons
+document.querySelectorAll(".add-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const productName = this.dataset.product;
+    
+    gtag('event', 'add_to_cart', {
+      currency: 'USD',
+      value: 1.00,
+      item_name: productName
+    });
+  });
+});
+
+// Track Checkout
+document.addEventListener("checkout", function () {
+  gtag('event', 'begin_checkout', {
+    currency: 'USD'
+  });
+});
+</script>
+
