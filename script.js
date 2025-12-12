@@ -1,133 +1,91 @@
-// script.js - Final stable cart + UI handlers
-
-// Use a single cart key for localStorage
-const CART_KEY = 'lemfactory_cart_v2';
-
-function domReady(fn) {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fn);
-  } else {
-    fn();
-  }
+// Mobile nav toggle
+const navToggle = document.getElementById("nav-toggle");
+const nav = document.getElementById("main-nav");
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", !expanded);
+    nav.setAttribute("aria-hidden", expanded);
+  });
 }
 
-domReady(() => {
-  // MOBILE NAV toggle (keeps existing behavior)
-  const navToggle = document.getElementById("nav-toggle");
-  const nav = document.getElementById("main-nav");
-  if (navToggle && nav) {
-    navToggle.addEventListener("click", () => {
-      const expanded = navToggle.getAttribute("aria-expanded") === "true";
-      navToggle.setAttribute("aria-expanded", !expanded);
-      nav.setAttribute("aria-hidden", expanded);
-    });
-  }
+// Dynamic year
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // YEAR
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+// Lightbox click-to-zoom
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
 
-  // LIGHTBOX (click image -> open)
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-  document.querySelectorAll(".card img").forEach(img => {
-    img.addEventListener("click", (e) => {
-      if (!lightbox || !lightboxImg) return;
-      lightboxImg.src = img.src;
-      lightbox.style.display = "flex";
-    });
+document.querySelectorAll(".card img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightbox.style.display = "flex";
   });
-  if (lightbox) {
-    lightbox.addEventListener("click", () => { lightbox.style.display = "none"; });
-  }
+});
+lightbox.addEventListener("click", () => lightbox.style.display = "none");
 
-  // CART helpers
-  function loadCart() {
-    try {
-      const raw = localStorage.getItem(CART_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      console.warn('Failed parsing cart', e);
-      return [];
-    }
-  }
+// -------------------- CART & Analytics --------------------
+const CART_KEY = 'lemfactory_cart_v1';
+const cartCountEl = document.getElementById('cart-count');
 
-  function saveCart(cart) {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    updateCartCounter();
+// Load cart from localStorage
+function loadCart() {
+  try {
+    const raw = localStorage.getItem(CART_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
   }
+}
+function saveCart(items) {
+  localStorage.setItem(CART_KEY, JSON.stringify(items));
+}
+function updateCartCounter() {
+  const items = loadCart();
+  const count = items.length;
+  if (cartCountEl) cartCountEl.textContent = count;
+}
+updateCartCounter();
 
-  function updateCartCounter() {
-    const counter = document.getElementById("cart-count");
-    if (!counter) return;
+// Add to cart behavior + analytics events
+document.querySelectorAll('.add-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.product || 'Product';
+    const price = parseFloat(btn.dataset.price || '1.00');
+
+    // Add to local cart
     const cart = loadCart();
-    // show total quantity (sum of qty)
-    const totalQty = cart.reduce((sum, it) => sum + (Number(it.qty) || 0), 0);
-    counter.textContent = totalQty;
-  }
-
-  // Adds product (merges if same name)
-  function addToCart(productObj) {
-    if (!productObj || !productObj.name) return;
-    const cart = loadCart();
-    const idx = cart.findIndex(i => i.sku && productObj.sku ? i.sku === productObj.sku : i.name === productObj.name);
-    if (idx === -1) {
-      cart.push({ sku: productObj.sku || productObj.name, name: productObj.name, price: Number(productObj.price || 1), qty: Number(productObj.qty || 1) });
-    } else {
-      cart[idx].qty = Number(cart[idx].qty || 0) + Number(productObj.qty || 1);
-    }
+    cart.push({ name, price, addedAt: new Date().toISOString() });
     saveCart(cart);
+    updateCartCounter();
 
-    // Optional: send tracking events here (fbq/gtag) if configured
-    try {
-      if (typeof fbq === 'function') {
-        fbq('track', 'AddToCart', { content_name: productObj.name, value: productObj.price || 1, currency: 'USD' });
-      }
-    } catch(e){}
-    try {
-      if (typeof gtag === 'function') {
-        gtag('event', 'add_to_cart', { item_name: productObj.name, value: productObj.price || 1, currency: 'USD' });
-      }
-    } catch(e){}
+    // GA4 event
+    if (typeof gtag === 'function') {
+      gtag('event', 'add_to_cart', {
+        currency: 'USD',
+        value: price,
+        items: [{ item_name: name }]
+      });
+    }
 
-    // small UI confirmation (non-blocking)
-    showTempToast(`${productObj.name} added to cart`);
-  }
+    // FB Pixel event
+    if (typeof fbq === 'function') {
+      fbq('track', 'AddToCart', {
+        content_name: name,
+        value: price,
+        currency: 'USD'
+      });
+    }
 
-  // Temporary toast in top-right for user feedback
-  function showTempToast(text, ms = 1400) {
-    let t = document.createElement('div');
-    t.className = 'temp-toast';
-    t.textContent = text;
-    Object.assign(t.style, {
-      position: 'fixed', top: '90px', right: '24px', background: '#111', color: '#fff', padding: '8px 12px',
-      borderRadius: '8px', zIndex: 4000, opacity: 0, transition: 'opacity 0.18s'
-    });
-    document.body.appendChild(t);
-    requestAnimationFrame(()=> t.style.opacity = 1);
-    setTimeout(()=> {
-      t.style.opacity = 0;
-      setTimeout(()=> t.remove(), 220);
-    }, ms);
-  }
-
-  // Attach Add-to-cart buttons
-  document.querySelectorAll('.add-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const name = btn.getAttribute('data-product') || btn.dataset.product || btn.textContent.trim();
-      // price fixed to $1 as requested
-      addToCart({ name, price: 1, sku: name.toLowerCase().replace(/\s+/g, '-') });
-    });
+    // Simple visual feedback
+    btn.textContent = 'Added ✓';
+    setTimeout(() => btn.textContent = `Add to Cart — $${price.toFixed(2)}`, 1200);
   });
+});
 
-  // Cart icon click => go to checkout page
-  const cartIcon = document.getElementById('cart-icon');
-  if (cartIcon) {
-    cartIcon.addEventListener('click', () => {
-      window.location.href = 'checkout.html';
-    });
-  }
-
-  // initialize counter
-  updateCartCounter();
+// Cart icon -> go to checkout page
+const cartIcon = document.getElementById('cart-icon');
+if (cartIcon) cartIcon.addEventListener('click', () => {
+  window.location.href = 'checkout.html';
 });
