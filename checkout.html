@@ -2,75 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Checkout — LEM Factory</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>Checkout — LEM Factory</title>
+
+  <!-- Pixel + GA4 (keep same snippets so page views tracked) -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '785081037921589'); 
+  fbq('track', 'PageView');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPL0N1EVP2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CPL0N1EVP2', { 'send_page_view': true });
+  </script>
+
   <style>
-    /* small local style for checkout list */
-    .checkout-list { list-style:none; padding:0; margin:1rem 0; text-align:left; max-width:720px; margin-left:auto; margin-right:auto; }
-    .checkout-list li { padding:10px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center; }
-    .checkout-summary { text-align:center; margin-top:18px; font-weight:700; }
-    .not-available { color:#b91c1c; font-weight:700; margin-top:20px; }
+    body { font-family: Inter, system-ui, sans-serif; padding:40px; background:#f7f8fa; color:#0b1220; }
+    .box { max-width:720px; margin:40px auto; background:#fff; padding:28px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06); text-align:center; }
+    h1 { margin-bottom:12px; }
+    p.lead { color:#6b7280; margin-bottom:18px; }
+    .items { text-align:left; margin:18px 0; }
+    .btn { background:#ffbf00; padding:10px 18px; border-radius:10px; display:inline-block; text-decoration:none; color:#000; font-weight:700; margin-top:16px; }
+    .warning { color:#b91c1c; font-weight:700; margin-top:16px; }
   </style>
 </head>
 <body>
-  <header class="site-header fixed" style="position:relative; top:0">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="LemLogo.png" alt="LEM Factory logo" class="logo" />
-        <span class="brand-text">LEM Factory</span>
-      </a>
-    </div>
-  </header>
+  <div class="box">
+    <h1>Checkout</h1>
+    <p class="lead">The checkout flow is currently a demo. We show your cart below.</p>
 
-  <main style="padding-top:120px;">
-    <div class="container">
-      <h1>Checkout</h1>
-      <p class="muted">Review the products you added</p>
+    <div id="cart-items" class="items"></div>
 
-      <ul id="checkout-list" class="checkout-list"></ul>
+    <div class="warning">Important: This product is currently not available in your country. Our team will contact you soon about availability and shipping options.</div>
 
-      <div class="checkout-summary">
-        Subtotal: <span id="checkout-total">0.00</span> USD
-      </div>
-
-      <div class="not-available">
-        ⚠ Product will be available soon in your country.
-      </div>
-
-      <div style="text-align:center; margin-top:18px;">
-        <button class="btn" onclick="window.location.href='index.html'">Continue Shopping</button>
-      </div>
-    </div>
-  </main>
+    <a href="index.html" class="btn">Return to Shop</a>
+  </div>
 
   <script>
-    (function(){
-      const CART_KEY = 'lemfactory_cart_v2';
-      function loadCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ return []; } }
-      const cart = loadCart();
-      const listEl = document.getElementById('checkout-list');
-      const totalEl = document.getElementById('checkout-total');
-      if (!listEl) return;
+    // Display items from localStorage
+    const CART_KEY = 'lemfactory_cart_v1';
+    function loadCart() {
+      try { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
+      catch(e){ return []; }
+    }
+    const items = loadCart();
+    const list = document.getElementById('cart-items');
+    if (!list) throw 'missing cart-items';
+    if (items.length === 0) {
+      list.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+      let html = '<ul>';
+      let total = 0;
+      items.forEach((it, i) => {
+        html += `<li>${i+1}. ${it.name} — $${(parseFloat(it.price)||1).toFixed(2)}</li>`;
+        total += parseFloat(it.price||1);
+      });
+      html += `</ul><p><strong>Total: $${total.toFixed(2)}</strong></p>`;
+      list.innerHTML = html;
+    }
 
-      if (cart.length === 0) {
-        listEl.innerHTML = '<li>Your cart is empty.</li>';
-        totalEl.textContent = '0.00';
-      } else {
-        let subtotal = 0;
-        listEl.innerHTML = '';
-        cart.forEach(item => {
-          const li = document.createElement('li');
-          const qty = Number(item.qty || 1);
-          const price = Number(item.price || 1);
-          const line = (price * qty);
-          subtotal += line;
-          li.innerHTML = `<div>${item.name} <small style="color:#666;">x${qty}</small></div><div style="font-weight:700;">$${line.toFixed(2)}</div>`;
-          listEl.appendChild(li);
-        });
-        totalEl.textContent = subtotal.toFixed(2);
-      }
-    })();
+    // Track checkout initiation to GA4 + FB Pixel (demo)
+    if (typeof gtag === 'function') {
+      gtag('event', 'begin_checkout', { currency:'USD', value: items.reduce((s,i)=>s+(parseFloat(i.price)||1),0) });
+    }
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', { value: items.reduce((s,i)=>s+(parseFloat(i.price)||1),0), currency:'USD' });
+    }
   </script>
 </body>
 </html>
