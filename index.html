@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LEM Factory — Energy Drinks & Cubes</title>
-  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes." />
+  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes. Natural energy powered by caffeine, L-Carnitine, and B-vitamins." />
 
   <!-- ================= META PIXEL ================= -->
   <script>
@@ -25,7 +25,7 @@
   </noscript>
   <!-- =============== END META PIXEL =============== -->
 
-  <!-- ================= GA4 (CORRECT) ================= -->
+  <!-- ================= GA4 (FINAL / CORRECT) ================= -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -40,34 +40,64 @@
 
 <body>
 
-<!-- CART ICON -->
-<div id="cart-icon">🛒 <span id="cart-count">0</span></div>
+<!-- Floating Cart -->
+<div id="cart-icon" style="position:fixed;right:18px;top:18px;z-index:1200;background:#ffbf00;padding:10px 14px;border-radius:24px;cursor:pointer">
+  🛒 <span id="cart-count">0</span>
+</div>
 
-<!-- PRODUCTS -->
-<button class="add-btn" data-product="Lime Energy" data-price="1">Add to Cart</button>
+<header class="site-header fixed">
+  <div class="container header-inner">
+    <a class="brand" href="#home">
+      <img src="LemLogo.png" class="logo">
+      <span>LEM Factory</span>
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <h1>LEM Factory — Natural Energy, Smart Performance</h1>
+  <p>Sugar-free fitness & performance energy drinks and cubes</p>
+</section>
+
+<section id="drinks">
+  <h2>LEM Energy Drinks</h2>
+
+  <button class="add-btn" data-product="Lime Energy" data-price="1">Add Lime Energy</button>
+  <button class="add-btn" data-product="Berry Boost" data-price="1">Add Berry Boost</button>
+  <button class="add-btn" data-product="Night Focus" data-price="1">Add Night Focus</button>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; LEM Factory</p>
+</footer>
 
 <script>
-/* ================= CART + GA4 EVENTS ================= */
+/* ================= CART + ANALYTICS ================= */
 const CART_KEY = 'lemfactory_cart_v1';
 let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+document.getElementById('cart-count').textContent = cart.length;
 
 document.querySelectorAll('.add-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const product = btn.dataset.product;
+    const name = btn.dataset.product;
     const price = Number(btn.dataset.price);
 
-    cart.push({ name: product, price });
+    cart.push({ name, price });
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
     document.getElementById('cart-count').textContent = cart.length;
 
-    // GA4 EVENT
+    // GA4
     gtag('event', 'add_to_cart', {
       currency: 'USD',
       value: price,
-      items: [{ item_name: product, price, quantity: 1 }]
+      items: [{ item_name: name, price, quantity: 1 }]
     });
 
-    // META EVENT
+    // Meta
     fbq('track', 'AddToCart', { value: price, currency: 'USD' });
   });
 });
