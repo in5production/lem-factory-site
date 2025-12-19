@@ -5,26 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Checkout — LEM Factory</title>
 
-  <!-- Meta Pixel -->
+  <!-- ===== META PIXEL ===== -->
   <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){
-        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)
-      };
-      if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];
-      t=b.createElement(e);t.async=!0;
-      t.src=v;
-      s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '785081037921589');
-    fbq('track', 'PageView');
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '785081037921589');
+  fbq('track', 'PageView');
   </script>
+  <!-- ===== END META PIXEL ===== -->
 
-  <!-- GA4 -->
+  <!-- ===== GOOGLE ANALYTICS GA4 (CORRECT) ===== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -32,31 +28,42 @@
     gtag('js', new Date());
     gtag('config', 'G-0323KWZJW9');
   </script>
+  <!-- ===== END GA4 ===== -->
 
+  <style>
+    body { font-family: system-ui; background:#f7f8fa; padding:40px; }
+    .box { max-width:720px; margin:auto; background:#fff; padding:28px; border-radius:12px; }
+  </style>
 </head>
+
 <body>
+  <div class="box">
+    <h1>Checkout</h1>
+    <div id="cart-items"></div>
+    <a href="index.html">Return to shop</a>
+  </div>
 
-<h1>Checkout</h1>
-<div id="cart-items"></div>
+  <script>
+    const CART_KEY = 'lemfactory_cart_v1';
+    const items = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    const list = document.getElementById('cart-items');
 
-<script>
-const CART_KEY = 'lemfactory_cart_v1';
-const items = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    if (!items.length) {
+      list.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+      let total = 0;
+      list.innerHTML = '<ul>' + items.map(i=>{
+        total += Number(i.price||1);
+        return `<li>${i.name} — $${i.price}</li>`;
+      }).join('') + '</ul><strong>Total: $'+total+'</strong>';
+    }
 
-let total = 0;
-let html = '<ul>';
-
-items.forEach(i => {
-  html += `<li>${i.name} — $${i.price}</li>`;
-  total += Number(i.price);
-});
-
-html += `</ul><strong>Total: $${total}</strong>`;
-document.getElementById('cart-items').innerHTML = html;
-
-gtag('event','begin_checkout',{value:total,currency:'USD'});
-fbq('track','InitiateCheckout',{value:total,currency:'USD'});
-</script>
-
+    if (typeof gtag === 'function') {
+      gtag('event', 'begin_checkout', { value: total || 0, currency:'USD' });
+    }
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', { value: total || 0, currency:'USD' });
+    }
+  </script>
 </body>
 </html>
