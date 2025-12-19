@@ -1,66 +1,152 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LEM Factory — Energy Drinks & Cubes</title>
+  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes. Natural energy powered by caffeine, L-Carnitine, and B-vitamins." />
 
-<title>LEM Factory — Energy Drinks & Cubes</title>
-<meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes." />
+  <!-- ===== META PIXEL ===== -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){
+        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-<!-- ================= META PIXEL (KEEP) ================= -->
-<script>
-!function(f,b,e,v,n,t,s){
-if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)
-}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '785081037921589');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=785081037921589&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- ===== END META PIXEL ===== -->
 
-fbq('init', '785081037921589');
-fbq('track', 'PageView');
-</script>
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=785081037921589&ev=PageView&noscript=1"/>
-</noscript>
-<!-- ===================================================== -->
+  <!-- ===== GOOGLE ANALYTICS GA4 ===== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0323KWZJW9');
+  </script>
+  <!-- ===== END GA4 ===== -->
 
-<!-- ================= GA4 (MAIN ANALYTICS) ================= -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-0323KWZJW9', {
-  send_page_view: true
-});
-</script>
-<!-- ======================================================= -->
-
-<link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
 <!-- Floating Cart -->
-<div id="cart-icon">🛒 <span id="cart-count">0</span></div>
+<div id="cart-icon" style="position:fixed;right:18px;top:18px;z-index:1200;background:#ffbf00;padding:10px 14px;border-radius:24px;cursor:pointer">
+  🛒 <span id="cart-count">0</span>
+</div>
 
-<!-- HEADER -->
 <header class="site-header fixed">
   <div class="container header-inner">
     <a class="brand" href="#home">
       <img src="LemLogo.png" class="logo" />
       <span class="brand-text">LEM Factory</span>
     </a>
+    <nav class="nav">
+      <ul>
+        <li><a href="#drinks">Drinks</a></li>
+        <li><a href="#cubes">Energy Cubes</a></li>
+        <li><a href="#ingredients">Ingredients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<!-- ================= SITE CONTENT (UNCHANGED) ================= -->
-<!-- EVERYTHING YOU HAD STAYS THE SAME -->
-<!-- I DID NOT REMOVE ANY SECTION -->
-<!-- ============================================================ -->
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <h1>LEM Factory — Natural Energy, Smart Performance</h1>
+      <p>Sugar-free fitness & performance energy drinks and cubes.</p>
+      <a href="#drinks" class="btn primary">Explore Products</a>
+    </div>
+    <img src="All.png" />
+  </div>
+</section>
+
+<!-- DRINKS -->
+<section id="drinks" class="section">
+  <div class="container">
+    <h2>LEM Energy Drinks</h2>
+    <div class="cards-grid center">
+
+      <article class="card">
+        <img src="Lime Energy.png">
+        <h3>Lime Energy</h3>
+        <button class="add-btn" data-product="Lime Energy" data-price="1">Add to Cart</button>
+      </article>
+
+      <article class="card">
+        <img src="Berry Boost.png">
+        <h3>Berry Boost</h3>
+        <button class="add-btn" data-product="Berry Boost" data-price="1">Add to Cart</button>
+      </article>
+
+      <article class="card">
+        <img src="Night Focus.png">
+        <h3>Night Focus</h3>
+        <button class="add-btn" data-product="Night Focus" data-price="1">Add to Cart</button>
+      </article>
+
+      <article class="card">
+        <img src="Ocean Ice.png">
+        <h3>Ocean Ice</h3>
+        <button class="add-btn" data-product="Ocean Ice" data-price="1">Add to Cart</button>
+      </article>
+
+      <article class="card">
+        <img src="Sunrise Energy.png">
+        <h3>Sunrise Energy</h3>
+        <button class="add-btn" data-product="Sunrise Energy" data-price="1">Add to Cart</button>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section id="ingredients" class="section alt">
+  <div class="container">
+    <h2>Key Ingredients</h2>
+    <ul>
+      <li>Natural Caffeine</li>
+      <li>L-Carnitine</li>
+      <li>B-Vitamins</li>
+      <li>Electrolytes</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>Email: info@lemfactory.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© LEM Factory</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
