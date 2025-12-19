@@ -1,33 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Checkout — LEM Factory</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checkout — LEM Factory</title>
 
-<!-- META PIXEL -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '785081037921589');
-fbq('track', 'PageView');
-</script>
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){
+        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-<!-- GA4 (CORRECT) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-0323KWZJW9');
-</script>
+    fbq('init', '785081037921589');
+    fbq('track', 'PageView');
+  </script>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0323KWZJW9');
+  </script>
+
 </head>
-
 <body>
 
 <h1>Checkout</h1>
@@ -37,17 +43,19 @@ gtag('config', 'G-0323KWZJW9');
 const CART_KEY = 'lemfactory_cart_v1';
 const items = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
 
-let total = items.reduce((s,i)=>s+i.price,0);
+let total = 0;
+let html = '<ul>';
 
-// GA4 CHECKOUT EVENT
-gtag('event', 'begin_checkout', {
-  currency: 'USD',
-  value: total,
-  items: items.map(i => ({ item_name: i.name, price: i.price, quantity: 1 }))
+items.forEach(i => {
+  html += `<li>${i.name} — $${i.price}</li>`;
+  total += Number(i.price);
 });
 
-// META EVENT
-fbq('track', 'InitiateCheckout', { value: total, currency: 'USD' });
+html += `</ul><strong>Total: $${total}</strong>`;
+document.getElementById('cart-items').innerHTML = html;
+
+gtag('event','begin_checkout',{value:total,currency:'USD'});
+fbq('track','InitiateCheckout',{value:total,currency:'USD'});
 </script>
 
 </body>
