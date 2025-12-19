@@ -8,21 +8,16 @@
 
   <!-- ===== META PIXEL ===== -->
   <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){
-        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)
-      };
-      if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];
-      t=b.createElement(e);t.async=!0;
-      t.src=v;
-      s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '785081037921589');
-    fbq('track', 'PageView');
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '785081037921589');
+  fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
@@ -30,7 +25,7 @@
   </noscript>
   <!-- ===== END META PIXEL ===== -->
 
-  <!-- ===== GOOGLE ANALYTICS GA4 ===== -->
+  <!-- ===== GOOGLE ANALYTICS GA4 (CORRECT) ===== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -45,109 +40,39 @@
 
 <body>
 
-<!-- Floating Cart -->
-<div id="cart-icon" style="position:fixed;right:18px;top:18px;z-index:1200;background:#ffbf00;padding:10px 14px;border-radius:24px;cursor:pointer">
-  🛒 <span id="cart-count">0</span>
-</div>
-
-<header class="site-header fixed">
-  <div class="container header-inner">
-    <a class="brand" href="#home">
-      <img src="LemLogo.png" class="logo" />
-      <span class="brand-text">LEM Factory</span>
-    </a>
-    <nav class="nav">
-      <ul>
-        <li><a href="#drinks">Drinks</a></li>
-        <li><a href="#cubes">Energy Cubes</a></li>
-        <li><a href="#ingredients">Ingredients</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Floating Cart Counter -->
+  <div id="cart-icon" title="View cart" style="position:fixed;right:18px;top:18px;z-index:1200;background:#ffbf00;padding:10px 14px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,0.15);cursor:pointer">
+    🛒 <span id="cart-count">0</span>
   </div>
-</header>
 
-<main>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div>
-      <h1>LEM Factory — Natural Energy, Smart Performance</h1>
-      <p>Sugar-free fitness & performance energy drinks and cubes.</p>
-      <a href="#drinks" class="btn primary">Explore Products</a>
+  <!-- Header -->
+  <header class="site-header fixed">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <img src="LemLogo.png" alt="LEM Factory logo" class="logo" />
+        <span class="brand-text">LEM Factory</span>
+      </a>
     </div>
-    <img src="All.png" />
-  </div>
-</section>
+  </header>
 
-<!-- DRINKS -->
-<section id="drinks" class="section">
-  <div class="container">
-    <h2>LEM Energy Drinks</h2>
-    <div class="cards-grid center">
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <h1>LEM Factory — Natural Energy, Smart Performance</h1>
+          <p>Sugar-free fitness & performance energy drinks and cubes.</p>
+        </div>
+        <img src="All.png" alt="LEM Products">
+      </div>
+    </section>
+  </main>
 
-      <article class="card">
-        <img src="Lime Energy.png">
-        <h3>Lime Energy</h3>
-        <button class="add-btn" data-product="Lime Energy" data-price="1">Add to Cart</button>
-      </article>
-
-      <article class="card">
-        <img src="Berry Boost.png">
-        <h3>Berry Boost</h3>
-        <button class="add-btn" data-product="Berry Boost" data-price="1">Add to Cart</button>
-      </article>
-
-      <article class="card">
-        <img src="Night Focus.png">
-        <h3>Night Focus</h3>
-        <button class="add-btn" data-product="Night Focus" data-price="1">Add to Cart</button>
-      </article>
-
-      <article class="card">
-        <img src="Ocean Ice.png">
-        <h3>Ocean Ice</h3>
-        <button class="add-btn" data-product="Ocean Ice" data-price="1">Add to Cart</button>
-      </article>
-
-      <article class="card">
-        <img src="Sunrise Energy.png">
-        <h3>Sunrise Energy</h3>
-        <button class="add-btn" data-product="Sunrise Energy" data-price="1">Add to Cart</button>
-      </article>
-
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> LEM Factory</p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- INGREDIENTS -->
-<section id="ingredients" class="section alt">
-  <div class="container">
-    <h2>Key Ingredients</h2>
-    <ul>
-      <li>Natural Caffeine</li>
-      <li>L-Carnitine</li>
-      <li>B-Vitamins</li>
-      <li>Electrolytes</li>
-    </ul>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <div class="container">
-    <h2>Contact</h2>
-    <p>Email: info@lemfactory.com</p>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <p>© LEM Factory</p>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
