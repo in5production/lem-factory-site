@@ -15,7 +15,7 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '785081037921589');
+  fbq('init', '785081037921589'); 
   fbq('track', 'PageView');
   </script>
   <!-- ===== END META PIXEL ===== -->
@@ -31,16 +31,28 @@
   <!-- ===== END GA4 ===== -->
 
   <style>
-    body { font-family: system-ui; background:#f7f8fa; padding:40px; }
-    .box { max-width:720px; margin:auto; background:#fff; padding:28px; border-radius:12px; }
+    body { font-family: Inter, system-ui, sans-serif; padding:40px; background:#f7f8fa; color:#0b1220; }
+    .box { max-width:720px; margin:40px auto; background:#fff; padding:28px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06); text-align:center; }
+    h1 { margin-bottom:12px; }
+    p.lead { color:#6b7280; margin-bottom:18px; }
+    .items { text-align:left; margin:18px 0; }
+    .btn { background:#ffbf00; padding:10px 18px; border-radius:10px; display:inline-block; text-decoration:none; color:#000; font-weight:700; margin-top:16px; }
+    .warning { color:#b91c1c; font-weight:700; margin-top:16px; }
   </style>
 </head>
 
 <body>
   <div class="box">
     <h1>Checkout</h1>
-    <div id="cart-items"></div>
-    <a href="index.html">Return to shop</a>
+    <p class="lead">The checkout flow is currently a demo. We show your cart below.</p>
+
+    <div id="cart-items" class="items"></div>
+
+    <div class="warning">
+      Important: This product is currently not available in your country.
+    </div>
+
+    <a href="index.html" class="btn">Return to Shop</a>
   </div>
 
   <script>
@@ -48,21 +60,24 @@
     const items = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
     const list = document.getElementById('cart-items');
 
-    if (!items.length) {
+    let total = 0;
+    if (items.length === 0) {
       list.innerHTML = '<p>Your cart is empty.</p>';
     } else {
-      let total = 0;
-      list.innerHTML = '<ul>' + items.map(i=>{
-        total += Number(i.price||1);
-        return `<li>${i.name} — $${i.price}</li>`;
-      }).join('') + '</ul><strong>Total: $'+total+'</strong>';
+      list.innerHTML =
+        '<ul>' +
+        items.map((it,i)=>{
+          total += parseFloat(it.price||1);
+          return `<li>${i+1}. ${it.name} — $${parseFloat(it.price||1).toFixed(2)}</li>`;
+        }).join('') +
+        `</ul><p><strong>Total: $${total.toFixed(2)}</strong></p>`;
     }
 
     if (typeof gtag === 'function') {
-      gtag('event', 'begin_checkout', { value: total || 0, currency:'USD' });
+      gtag('event', 'begin_checkout', { currency:'USD', value: total });
     }
     if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', { value: total || 0, currency:'USD' });
+      fbq('track', 'InitiateCheckout', { currency:'USD', value: total });
     }
   </script>
 </body>
