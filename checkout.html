@@ -20,7 +20,7 @@
   </script>
   <!-- ===== END META PIXEL ===== -->
 
-  <!-- ===== GOOGLE ANALYTICS GA4 (CORRECT) ===== -->
+  <!-- ===== GOOGLE ANALYTICS GA4 ===== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -31,54 +31,136 @@
   <!-- ===== END GA4 ===== -->
 
   <style>
-    body { font-family: Inter, system-ui, sans-serif; padding:40px; background:#f7f8fa; color:#0b1220; }
-    .box { max-width:720px; margin:40px auto; background:#fff; padding:28px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06); text-align:center; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      padding:40px;
+      background:#f7f8fa;
+      color:#0b1220;
+    }
+    .box {
+      max-width:720px;
+      margin:40px auto;
+      background:#fff;
+      padding:28px;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+      text-align:center;
+    }
     h1 { margin-bottom:12px; }
     p.lead { color:#6b7280; margin-bottom:18px; }
     .items { text-align:left; margin:18px 0; }
-    .btn { background:#ffbf00; padding:10px 18px; border-radius:10px; display:inline-block; text-decoration:none; color:#000; font-weight:700; margin-top:16px; }
-    .warning { color:#b91c1c; font-weight:700; margin-top:16px; }
+    .btn {
+      background:#ffbf00;
+      padding:10px 18px;
+      border-radius:10px;
+      display:inline-block;
+      text-decoration:none;
+      color:#000;
+      font-weight:700;
+      margin-top:16px;
+      cursor:pointer;
+      border:none;
+    }
+    .warning {
+      color:#b91c1c;
+      font-weight:700;
+      margin-top:16px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="box">
-    <h1>Checkout</h1>
-    <p class="lead">The checkout flow is currently a demo. We show your cart below.</p>
 
-    <div id="cart-items" class="items"></div>
+<div class="box">
+  <h1>Checkout</h1>
+  <p class="lead">Review your order and confirm below.</p>
 
-    <div class="warning">
-      Important: This product is currently not available in your country.
-    </div>
+  <div id="cart-items" class="items"></div>
 
-    <a href="index.html" class="btn">Return to Shop</a>
+  <button id="confirmOrder" class="btn">Confirm Order</button>
+
+  <div class="warning">
+    Note: Availability will be confirmed after order submission.
   </div>
 
-  <script>
-    const CART_KEY = 'lemfactory_cart_v1';
-    const items = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-    const list = document.getElementById('cart-items');
+  <br>
+  <a href="index.html">← Return to Shop</a>
+</div>
 
-    let total = 0;
-    if (items.length === 0) {
-      list.innerHTML = '<p>Your cart is empty.</p>';
-    } else {
-      list.innerHTML =
-        '<ul>' +
-        items.map((it,i)=>{
-          total += parseFloat(it.price||1);
-          return `<li>${i+1}. ${it.name} — $${parseFloat(it.price||1).toFixed(2)}</li>`;
-        }).join('') +
-        `</ul><p><strong>Total: $${total.toFixed(2)}</strong></p>`;
-    }
+<script>
+/* ===============================
+   LOAD CART
+================================ */
+const CART_KEY = 'lemfactory_cart_v1';
+const items = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+const list = document.getElementById('cart-items');
 
-    if (typeof gtag === 'function') {
-      gtag('event', 'begin_checkout', { currency:'USD', value: total });
-    }
-    if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', { currency:'USD', value: total });
-    }
-  </script>
+let total = 0;
+
+if (items.length === 0) {
+  list.innerHTML = '<p>Your cart is empty.</p>';
+  document.getElementById('confirmOrder').style.display = 'none';
+} else {
+  list.innerHTML =
+    '<ul>' +
+    items.map((it,i)=>{
+      total += Number(it.price || 1);
+      return `<li>${i+1}. ${it.name} — $${Number(it.price||1).toFixed(2)}</li>`;
+    }).join('') +
+    `</ul><p><strong>Total: $${total.toFixed(2)}</strong></p>`;
+}
+
+/* ===============================
+   BEGIN CHECKOUT (ON LOAD)
+================================ */
+if (typeof gtag === 'function') {
+  gtag('event', 'begin_checkout', {
+    currency: 'USD',
+    value: total
+  });
+}
+if (typeof fbq === 'function') {
+  fbq('track', 'InitiateCheckout', {
+    currency: 'USD',
+    value: total
+  });
+}
+
+/* ===============================
+   CONFIRM ORDER → PURCHASE
+================================ */
+document.getElementById('confirmOrder').addEventListener('click', function () {
+
+  const transactionId = 'LEM-' + Date.now();
+
+  /* ---- GA4 PURCHASE ---- */
+  if (typeof gtag === 'function') {
+    gtag('event', 'purchase', {
+      transaction_id: transactionId,
+      value: total,
+      currency: 'USD',
+      items: items.map(it => ({
+        item_name: it.name,
+        price: Number(it.price || 1),
+        quantity: 1
+      }))
+    });
+  }
+
+  /* ---- META PURCHASE ---- */
+  if (typeof fbq === 'function') {
+    fbq('track', 'Purchase', {
+      value: total,
+      currency: 'USD'
+    });
+  }
+
+  /* ---- REDIRECT AFTER TRACKING ---- */
+  setTimeout(() => {
+    window.location.href = 'not-available.html';
+  }, 800);
+});
+</script>
+
 </body>
 </html>
