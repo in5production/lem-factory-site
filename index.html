@@ -1,232 +1,298 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LEM Factory — Energy Drinks & Cubes</title>
-  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes. Natural energy powered by caffeine, L-Carnitine, and B-vitamins." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LEM Factory — Energy Drinks & Cubes</title>
+  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes. Natural energy powered by caffeine, L-Carnitine, and B-vitamins." />
 
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '785081037921589'); 
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=785081037921589&ev=PageView&noscript=1"/>
-  </noscript>
+  <!-- ===== META PIXEL (place in <head>) ===== -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '785081037921589'); 
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=785081037921589&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- ===== END META PIXEL ===== -->
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0323KWZJW9');
-  </script>
+  <!-- ===== GOOGLE ANALYTICS GA4 (CORRECT) ===== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0323KWZJW9');
+  </script>
+  <!-- ===== END GA4 ===== -->
 
-  <style>
-    /* BASIC STYLING */
-    :root { --primary: #ffbf00; --dark: #121212; --light: #ffffff; --gray: #f4f4f4; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: var(--dark); line-height: 1.6; overflow-x: hidden; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    
-    /* HEADER & NAV */
-    header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
-    .brand { display: flex; align-items: center; text-decoration: none; color: var(--dark); font-weight: bold; font-size: 1.2rem; }
-    .logo { height: 40px; margin-right: 10px; }
-    nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
-    nav a { text-decoration: none; color: var(--dark); font-weight: 500; transition: color 0.3s; }
-    nav a:hover { color: var(--primary); }
-    .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
-
-    /* HERO */
-    .hero { padding: 80px 0; background: var(--gray); }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    .hero-copy h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
-    .hero-media img { width: 100%; border-radius: 12px; }
-    .btn { display: inline-block; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; }
-    .btn.primary { background: var(--primary); color: #000; }
-
-    /* CARDS */
-    .section { padding: 60px 0; text-align: center; }
-    .section.alt { background: var(--gray); }
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
-    .card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s; }
-    .card:hover { transform: translateY(-5px); }
-    .card img { width: 100%; height: auto; margin-bottom: 15px; }
-    .add-btn { width: 100%; background: var(--dark); color: #fff; border: none; padding: 10px; border-radius: 6px; cursor: pointer; margin-top: 10px; }
-    .add-btn:hover { background: var(--primary); color: #000; }
-
-    /* SOCIAL & FOOTER */
-    .social { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
-    .social img { width: 24px; height: 24px; }
-    footer { background: var(--dark); color: #fff; padding: 30px 0; text-align: center; font-size: 0.9rem; }
-
-    /* MOBILE NAV */
-    @media (max-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .nav-toggle { display: block; }
-      .nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
-      .nav.active { display: block; }
-      nav ul { flex-direction: column; text-align: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <div id="cart-icon" title="View cart" style="position:fixed;right:18px;top:18px;z-index:1200;background:#ffbf00;padding:10px 14px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,0.15);cursor:pointer">
-    🛒 <span id="cart-count">0</span>
-  </div>
+  <!-- Floating Cart Counter -->
+  <div id="cart-icon" title="View cart" style="position:fixed;right:18px;top:18px;z-index:1200;background:#ffbf00;padding:10px 14px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,0.15);cursor:pointer">
+    🛒 <span id="cart-count">0</span>
+  </div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#home">
-        <img src="LemLogo.png" alt="LEM Factory logo" class="logo" />
-        <span class="brand-text">LEM Factory</span>
-      </a>
-      <button id="nav-toggle" class="nav-toggle">☰</button>
-      <nav id="main-nav" class="nav">
-        <ul>
-          <li><a href="#drinks">Drinks</a></li>
-          <li><a href="#cubes">Cubes</a></li>
-          <li><a href="#ingredients">Ingredients</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Fixed Header -->
+  <header class="site-header fixed">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <img src="LemLogo.png" alt="LEM Factory logo" class="logo" />
+        <span class="brand-text">LEM Factory</span>
+      </a>
+      <button id="nav-toggle" aria-expanded="false" aria-controls="main-nav" class="nav-toggle">☰</button>
+      <nav id="main-nav" class="nav">
+        <ul>
+          <li><a href="#drinks">Drinks</a></li>
+          <li><a href="#cubes">Energy Cubes</a></li>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>Natural Energy, Smart Performance</h1>
-          <p class="lead">Sugar-free fitness & performance fuel powered by natural caffeine and L-Carnitine.</p>
-          <a href="#drinks" class="btn primary">Explore Products</a>
-        </div>
-        <div class="hero-media">
-          <img src="All.png" alt="All LEM Energy Drinks" />
-        </div>
-      </div>
-    </section>
+  <main>
 
-    <section class="section" id="drinks">
-      <div class="container">
-        <h2>LEM Energy Drinks</h2>
-        <p class="muted">250 ml — Zero Sugar — Natural Boost</p>
-        <div class="cards-grid">
-          <article class="card">
-            <img src="Lime Energy.png" alt="Lime Energy"/>
-            <h3>Lime Energy</h3>
-            <button class="add-btn" data-product="Lime Drink" data-price="1.2">Add to Cart — 1.2 BHD</button>
-          </article>
-          <article class="card">
-            <img src="Berry Boost.png" alt="Berry Boost"/>
-            <h3>Berry Boost</h3>
-            <button class="add-btn" data-product="Berry Drink" data-price="1.2">Add to Cart — 1.2 BHD</button>
-          </article>
-          <article class="card">
-            <img src="Night Focus.png" alt="Night Focus"/>
-            <h3>Night Focus</h3>
-            <button class="add-btn" data-product="Night Drink" data-price="1.2">Add to Cart — 1.2 BHD</button>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>LEM Factory — Natural Energy, Smart Performance</h1>
+          <p class="lead">Sugar-free fitness & performance energy drinks and cubes — powered by natural caffeine, L-Carnitine, and vitamins.</p>
+          <a href="#drinks" class="btn primary">Explore Products</a>
+        </div>
+        <div class="hero-media">
+          <img src="All.png" alt="All LEM Energy Drinks" />
+        </div>
+      </div>
+    </section>
 
-    <section class="section alt" id="cubes">
-      <div class="container">
-        <h2>Single Energy Cubes</h2>
-        <div class="cards-grid">
-          <article class="card">
-            <img src="single lime cubes.png" alt="Lime Cube"/>
-            <h3>Lime Single</h3>
-            <button class="add-btn" data-product="Lime Single" data-price="3">Add to Cart — 3 BHD</button>
-          </article>
-          <article class="card">
-            <img src="single berry cubes.png" alt="Berry Cube"/>
-            <h3>Berry Single</h3>
-            <button class="add-btn" data-product="Berry Single" data-price="3">Add to Cart — 3 BHD</button>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- Drinks -->
+    <section class="section" id="drinks">
+      <div class="container">
+        <h2>LEM Energy Drinks</h2>
+        <p class="muted">Sugar-free 250 ml aluminum cans — each flavor with a unique boost.</p>
 
-    <section class="section" id="packs">
-      <div class="container">
-        <h2>Energy Cube Packs</h2>
-        <div class="cards-grid">
-          <article class="card">
-            <img src="Lim Energy Cube.png" alt="Lime Energy Pack"/>
-            <h3>Lime Pack</h3>
-            <button class="add-btn" data-product="Lime Pack" data-price="6">Add to Cart — 6 BHD</button>
-          </article>
-          <article class="card">
-            <img src="Berry Boost Cube.png" alt="Berry Boost Pack"/>
-            <h3>Berry Pack</h3>
-            <button class="add-btn" data-product="Berry Pack" data-price="6">Add to Cart — 6 BHD</button>
-          </article>
-        </div>
-      </div>
-    </section>
+        <div class="cards-grid center">
 
-    <section class="section alt" id="contact">
-      <div class="container">
-        <h2>Contact Our Team</h2>
-        <div class="social">
-          <a href="https://www.tiktok.com/@lemfactory"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
-          <a href="https://www.instagram.com/lemfactory"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
-        </div>
-        <p style="margin-top:20px;">Email: info@lemfactory.com</p>
-      </div>
-    </section>
-  </main>
+          <article class="card">
+            <img src="Lime Energy.png" alt="Lime Energy"/>
+            <h3>Lime Energy</h3>
+            <p>Refreshing lemon + mint for focus and hydration.</p>
+            <button class="add-btn" data-product="Lime Energy" data-price="1.00">Add to Cart — $1</button>
+          </article>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> LEM Factory. All rights reserved.</p>
-    </div>
-  </footer>
+          <article class="card">
+            <img src="Berry Boost.png" alt="Berry Boost"/>
+            <h3>Berry Boost</h3>
+            <p>Mixed berries + acai for antioxidant power.</p>
+            <button class="add-btn" data-product="Berry Boost" data-price="1.00">Add to Cart — $1</button>
+          </article>
 
-  <script>
-    // 1. Update Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+          <article class="card">
+            <img src="Night Focus.png" alt="Night Focus"/>
+            <h3>Night Focus</h3>
+            <p>Low-sugar formula with L-Theanine for calm energy.</p>
+            <button class="add-btn" data-product="Night Focus" data-price="1.00">Add to Cart — $1</button>
+          </article>
 
-    // 2. Mobile Nav Toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const mainNav = document.getElementById('main-nav');
-    navToggle.addEventListener('click', () => {
-      mainNav.classList.toggle('active');
-    });
+          <article class="card">
+            <img src="Ocean Ice.png" alt="Ocean Ice"/>
+            <h3>Ocean Ice</h3>
+            <p>Blue ice + citrus blend — cool and crisp.</p>
+            <button class="add-btn" data-product="Ocean Ice" data-price="1.00">Add to Cart — $1</button>
+          </article>
 
-    // 3. Simple Cart Logic
-    let cartCount = 0;
-    const cartDisplay = document.getElementById('cart-count');
-    document.querySelectorAll('.add-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        cartCount++;
-        cartDisplay.textContent = cartCount;
-        
-        // Track Pixel Event
-        if(typeof fbq !== 'undefined') {
-            fbq('track', 'AddToCart', {
-                content_name: button.getAttribute('data-product'),
-                value: button.getAttribute('data-price'),
-                currency: 'BHD'
-            });
-        }
-        alert(button.getAttribute('data-product') + ' added to cart!');
-      });
-    });
-  </script>
+          <article class="card">
+            <img src="Sunrise Energy.png" alt="Sunrise Energy"/>
+            <h3>Sunrise Energy</h3>
+            <p>Tropical mango + orange for a bright start.</p>
+            <button class="add-btn" data-product="Sunrise Energy" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Eaten Cube Banner -->
+    <section class="section alt banner-section">
+      <div class="container">
+        <div class="card large">
+          <img src="allflavours.png" alt="LEM Energy Cubes - All Flavours" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Single Cubes -->
+    <section class="section alt" id="cubes">
+      <div class="container">
+        <h2>LEM Energy Cubes — Singles</h2>
+        <p class="muted">Flavor-packed single cubes, each matching its drink counterpart.</p>
+
+        <div class="cards-grid center">
+
+          <article class="card">
+            <img src="single lime cubes.png" alt="Lime Cube"/>
+            <h3>Lime Energy Cube</h3>
+            <p>Lemon + Mint cube for refreshing clarity.</p>
+            <button class="add-btn" data-product="Lime Energy Cube" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="single berry cubes.png" alt="Berry Cube"/>
+            <h3>Berry Boost Cube</h3>
+            <p>Mixed berries + acai in compact cube form.</p>
+            <button class="add-btn" data-product="Berry Boost Cube" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="single night cubes.png" alt="Night Focus Cube"/>
+            <h3>Night Focus Cube</h3>
+            <p>Evening balance with L-Theanine and B-vitamins.</p>
+            <button class="add-btn" data-product="Night Focus Cube" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="single ocean ice cubes.png" alt="Ocean Ice Cube"/>
+            <h3>Ocean Ice Cube</h3>
+            <p>Cooling blue mint & citrus bite for alertness.</p>
+            <button class="add-btn" data-product="Ocean Ice Cube" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="single sun cubes.png" alt="Sunrise Cube"/>
+            <h3>Sunrise Energy Cube</h3>
+            <p>Mango-orange tropical burst of energy.</p>
+            <button class="add-btn" data-product="Sunrise Energy Cube" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Packs -->
+    <section class="section" id="packs">
+      <div class="container">
+        <h2>LEM Energy Packs</h2>
+        <p class="muted">Stylish five-cube packs designed for travel and retail shelves.</p>
+
+        <div class="cards-grid center">
+
+          <article class="card">
+            <img src="Lim Energy Cube.png" alt="Lime Energy Pack"/>
+            <h3>Lime Energy Pack</h3>
+            <button class="add-btn" data-product="Lime Energy Pack" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="Berry Boost Cube.png" alt="Berry Boost Pack"/>
+            <h3>Berry Boost Pack</h3>
+            <button class="add-btn" data-product="Berry Boost Pack" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="Night Focus Cube.png" alt="Night Focus Pack"/>
+            <h3>Night Focus Pack</h3>
+            <button class="add-btn" data-product="Night Focus Pack" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="Ocean Ice Cube.png" alt="Ocean Ice Pack"/>
+            <h3>Ocean Ice Pack</h3>
+            <button class="add-btn" data-product="Ocean Ice Pack" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+          <article class="card">
+            <img src="Sunrise Energy Cube.png" alt="Sunrise Energy Pack"/>
+            <h3>Sunrise Energy Pack</h3>
+            <button class="add-btn" data-product="Sunrise Energy Pack" data-price="1.00">Add to Cart — $1</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS -->
+    <section class="section alt" id="ingredients">
+      <div class="container">
+        <h2>Key Ingredients (per 100ml)</h2>
+        <ul class="ingredients-list">
+          <li>Natural Caffeine — 32 mg</li>
+          <li>L-Carnitine — 250 mg</li>
+          <li>L-Theanine — 100 mg</li>
+          <li>B-Vitamins (B3, B5, B6, B12) — 10–100% NRV</li>
+          <li>Ginseng Extract — 50 mg</li>
+          <li>Acai & Berry Extracts — 40 mg</li>
+          <li>Guarana Extract — 30 mg</li>
+          <li>Citric Acid — 80 mg</li>
+          <li>Stevia / Monk Fruit — 15 mg</li>
+          <li>Electrolytes (Na, K, Mg) — 50 mg</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Reach out for support, export, production, or sales.</p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Support</h3>
+            <p><a href="mailto:info@lemfactory.com">info@lemfactory.com</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Export & Delivery</h3>
+            <p><a href="mailto:export@lemfactory.com">export@lemfactory.com</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Production</h3>
+            <p><a href="mailto:production@lemfactory.com">production@lemfactory.com</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Sales & Marketing</h3>
+            <p><a href="mailto:sales@lemfactory.com">sales@lemfactory.com</a></p>
+          </div>
+        </div>
+
+        <div class="social">
+          <a href="https://www.tiktok.com/@lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"></a>
+          <a href="https://www.instagram.com/lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"></a>
+          <a href="https://x.com/lemfactory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"></a>
+          <a href="https://www.youtube.com/@lem_factory" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> LEM Factory. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
