@@ -4,10 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LEM Factory — Energy Drinks & Cubes</title>
+  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes. Natural energy powered by caffeine, L-Carnitine, and B-vitamins." />
 
-  <meta name="description" content="LEM Factory — sugar-free fitness & performance energy drinks and cubes." />
-
-  <!-- ===== META PIXEL ===== -->
+  <!-- META PIXEL -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,13 +20,13 @@
   fbq('track', 'PageView');
   </script>
 
-  <!-- ===== GA4 ===== -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0323KWZJW9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-0323KWZJW9', { currency: 'BHD' });
+    gtag('config', 'G-0323KWZJW9');
   </script>
 
   <link rel="stylesheet" href="styles.css" />
@@ -35,9 +34,8 @@
 
 <body>
 
-<!-- CART ICON -->
-<div id="cart-icon" style="position:fixed;right:18px;top:18px;background:#ffbf00;padding:10px 14px;border-radius:24px;cursor:pointer;z-index:1200">
-  🛒 <span id="cart-count">0</span>
+<div id="cart-icon" style="position:fixed;right:18px;top:18px;z-index:1200;background:#ffbf00;padding:10px 14px;border-radius:24px;cursor:pointer">
+🛒 <span id="cart-count">0</span>
 </div>
 
 <header class="site-header fixed">
@@ -46,161 +44,56 @@
       <img src="LemLogo.png" class="logo" />
       <span class="brand-text">LEM Factory</span>
     </a>
+    <button id="nav-toggle">☰</button>
+    <nav class="nav">
+      <ul>
+        <li><a href="#drinks">Drinks</a></li>
+        <li><a href="#cubes">Energy Cubes</a></li>
+        <li><a href="#ingredients">Ingredients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
 <main>
 
-<!-- ================= DRINKS ================= -->
+<!-- DRINKS -->
 <section class="section" id="drinks">
-<div class="container">
-<h2>LEM Energy Drinks</h2>
+<div class="container cards-grid center">
 
-<div class="cards-grid center">
+<button class="add-btn" data-product="Lime Energy" data-price="1.2">Add to Cart — 1.2 BHD</button>
+<button class="add-btn" data-product="Berry Boost" data-price="1.2">Add to Cart — 1.2 BHD</button>
+<button class="add-btn" data-product="Night Focus" data-price="1.2">Add to Cart — 1.2 BHD</button>
+<button class="add-btn" data-product="Ocean Ice" data-price="1.2">Add to Cart — 1.2 BHD</button>
+<button class="add-btn" data-product="Sunrise Energy" data-price="1.2">Add to Cart — 1.2 BHD</button>
 
-<article class="card">
-<img src="Lime Energy.png">
-<h3>Lime Energy</h3>
-<button class="add-btn" data-product="Lime Energy" data-price="1.2">
-Add to Cart — 1.2 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Berry Boost.png">
-<h3>Berry Boost</h3>
-<button class="add-btn" data-product="Berry Boost" data-price="1.2">
-Add to Cart — 1.2 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Night Focus.png">
-<h3>Night Focus</h3>
-<button class="add-btn" data-product="Night Focus" data-price="1.2">
-Add to Cart — 1.2 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Ocean Ice.png">
-<h3>Ocean Ice</h3>
-<button class="add-btn" data-product="Ocean Ice" data-price="1.2">
-Add to Cart — 1.2 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Sunrise Energy.png">
-<h3>Sunrise Energy</h3>
-<button class="add-btn" data-product="Sunrise Energy" data-price="1.2">
-Add to Cart — 1.2 BHD
-</button>
-</article>
-
-</div>
 </div>
 </section>
 
-<!-- ================= SINGLE CUBES ================= -->
+<!-- SINGLE CUBES -->
 <section class="section alt" id="cubes">
-<div class="container">
-<h2>Single Energy Cubes</h2>
+<div class="container cards-grid center">
 
-<div class="cards-grid center">
+<button class="add-btn" data-product="Lime Energy Cube" data-price="3">Add to Cart — 3 BHD</button>
+<button class="add-btn" data-product="Berry Boost Cube" data-price="3">Add to Cart — 3 BHD</button>
+<button class="add-btn" data-product="Night Focus Cube" data-price="3">Add to Cart — 3 BHD</button>
+<button class="add-btn" data-product="Ocean Ice Cube" data-price="3">Add to Cart — 3 BHD</button>
+<button class="add-btn" data-product="Sunrise Energy Cube" data-price="3">Add to Cart — 3 BHD</button>
 
-<article class="card">
-<img src="single lime cubes.png">
-<h3>Lime Energy Cube</h3>
-<button class="add-btn" data-product="Lime Energy Cube" data-price="3">
-Add to Cart — 3 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="single berry cubes.png">
-<h3>Berry Boost Cube</h3>
-<button class="add-btn" data-product="Berry Boost Cube" data-price="3">
-Add to Cart — 3 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="single night cubes.png">
-<h3>Night Focus Cube</h3>
-<button class="add-btn" data-product="Night Focus Cube" data-price="3">
-Add to Cart — 3 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="single ocean ice cubes.png">
-<h3>Ocean Ice Cube</h3>
-<button class="add-btn" data-product="Ocean Ice Cube" data-price="3">
-Add to Cart — 3 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="single sun cubes.png">
-<h3>Sunrise Energy Cube</h3>
-<button class="add-btn" data-product="Sunrise Energy Cube" data-price="3">
-Add to Cart — 3 BHD
-</button>
-</article>
-
-</div>
 </div>
 </section>
 
-<!-- ================= PACKS ================= -->
+<!-- PACKS -->
 <section class="section" id="packs">
-<div class="container">
-<h2>Energy Cube Packs</h2>
+<div class="container cards-grid center">
 
-<div class="cards-grid center">
+<button class="add-btn" data-product="Lime Energy Pack" data-price="6">Add to Cart — 6 BHD</button>
+<button class="add-btn" data-product="Berry Boost Pack" data-price="6">Add to Cart — 6 BHD</button>
+<button class="add-btn" data-product="Night Focus Pack" data-price="6">Add to Cart — 6 BHD</button>
+<button class="add-btn" data-product="Ocean Ice Pack" data-price="6">Add to Cart — 6 BHD</button>
+<button class="add-btn" data-product="Sunrise Energy Pack" data-price="6">Add to Cart — 6 BHD</button>
 
-<article class="card">
-<img src="Lim Energy Cube.png">
-<h3>Lime Energy Pack</h3>
-<button class="add-btn" data-product="Lime Energy Pack" data-price="6">
-Add to Cart — 6 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Berry Boost Cube.png">
-<h3>Berry Boost Pack</h3>
-<button class="add-btn" data-product="Berry Boost Pack" data-price="6">
-Add to Cart — 6 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Night Focus Cube.png">
-<h3>Night Focus Pack</h3>
-<button class="add-btn" data-product="Night Focus Pack" data-price="6">
-Add to Cart — 6 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Ocean Ice Cube.png">
-<h3>Ocean Ice Pack</h3>
-<button class="add-btn" data-product="Ocean Ice Pack" data-price="6">
-Add to Cart — 6 BHD
-</button>
-</article>
-
-<article class="card">
-<img src="Sunrise Energy Cube.png">
-<h3>Sunrise Energy Pack</h3>
-<button class="add-btn" data-product="Sunrise Energy Pack" data-price="6">
-Add to Cart — 6 BHD
-</button>
-</article>
-
-</div>
 </div>
 </section>
 
@@ -211,6 +104,5 @@ Add to Cart — 6 BHD
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
